@@ -5,58 +5,58 @@
     <div class="container">
       <header>Registration</header>
 
-      <form action="#">
+      <form action="/consignment-registration" method="post">
         <div class="fields">
         <div class="input-field3">
           <label>Doc No</label>
-          <input type="number">
+          <input name="docno" type="number">
       </div>
       <div class="input-field3">
         <label>To pincode</label>
-        <input style="width: 160px;" type="number">
+        <input name="pincode" style="width: 160px;" type="number">
     </div>
     <div class="input-field3">
       <label>To Center</label>
-      <input type="number">
+      <input name="center" type="number">
   </div>
 </div>
 <div class="fields">
   <div class="input-field4">
     <label>Sender Name</label>
-    <input type="text">
+    <input name="sender_name" type="text">
 </div>
 <div class="input-field4">
   <label>Sender Address</label>
-  <input type="text">
+  <input name="sender_address" type="text">
 </div>
 <div class="input-field4">
   <label>Sender City</label>
-  <input type="text">
+  <input name="sender_city" type="text">
 </div>
 <div class="input-field4">
   <label>Sender pincode</label>
-  <input type="number">
+  <input name="sender_pincode" type="number">
 </div>
 </div>
 <div class="fields">
 <div class="input-field3">
   <label>Receiver name</label>
-  <input type="text">
+  <input name="receiver_name" type="text">
 </div>
 <div class="input-field3">
   <label>Receiver address</label>
-  <input type="text">
+  <input name="receiver_address" type="text">
 </div>
 <div class="input-field3">
   <label>Receiver City</label>
-  <input type="text">
+  <input name="receiveer_city" type="text">
 </div>
 </div>
 <div class="fields">
   <div class="input-field7">
     <label for="">Type</label>
           <select id="type" name="type">
-            <option value="Yes">Select</option>
+            <option >Select</option>
             <option value="standard">Standard</option>
             <option value="value-plus">Value Plus</option>            
           </select>
@@ -64,89 +64,89 @@
 <div class="input-field7">
   <label for="">Service</label>
   <select id="type" name="Service">
-    <option value="Yes">Select</option>
+    <option>Select</option>
     <option value="standard">Standard</option>            
   </select>
 </div>
 <div class="input-field7">
   <label for="">Travel By</label>
-  <select id="type" name="Travel By">
-    <option value="Yes">Select</option>
+  <select id="type" name="travel_by">
+    <option>Select</option>
     <option value="air">Air</option>
     <option value="surface">Surface</option>            
   </select>
 </div>
 <div class="input-field7">
   <label for="">Child Badge</label>
-  <select id="type" name="">
-    <option value="Yes">Select</option>
+  <select id="type" name="child_badge">
+    <option>Select</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>            
   </select>
 </div>
 <div class="input-field7">
   <label for="">Insured</label>
-  <select id="type" name="">
-    <option value="Yes">Select</option>
+  <select id="type" name="insured">
+    <option>Select</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>            
   </select>
 </div>
 <div class="input-field7">
   <label for="">C.O.D</label>
-  <select id="type" name="">
-    <option value="Yes">Select</option>
+  <select id="type" name="cod">
+    <option>Select</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>            
   </select>
 </div>
 <div class="input-field7">
   <label>Values R.s</label>
-  <input type="number">
+  <input name="value" type="number">
 </div>
 </div>
 <div class="fields">
   <div class="input-field5">
     <label>Weight</label>
-    <input type="number">
+    <input name="weight" type="number">
   </div>
   <div class="input-field5">
     <label>Description</label>
-    <input type="text">
+    <input name="description" type="text">
   </div>
   <div class="input-field5">
     <label>Length</label>
-    <input type="number">
+    <input name="length" type="number">
   </div>
   <div class="input-field5">
     <label>Width</label>
-    <input type="number">
+    <input name="width" type="number">
   </div>
   <div class="input-field5">
     <label>Height</label>
-    <input type="number">
+    <input name="height" type="number">
   </div>
 </div>
 <div class="fields">
   <div class="input-field5">
     <label>Content</label>
-    <input type="text">
+    <input name="content" type="text">
   </div>
   <div class="input-field5">
     <label>Sender Gst number</label>
-    <input type="number">
+    <input name="sender_gst" type="number">
   </div>
   <div class="input-field5">
     <label for="">Is SEZ</label>
-    <select id="type" name="">
-      <option value="Yes">Select</option>
+    <select id="type" name="is_sez">
+      <option>Select</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option>            
     </select>
   </div>
   <div class="input-field5">
     <label for="">Is e-Way</label>
-    <select id="type" name="">
+    <select id="type" name="is_eway">
       <option value="Yes">Select</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option>            
@@ -154,13 +154,13 @@
   </div>
   <div class="input-field5">
     <label>e-Way Bill Number</label>
-    <input type="number">
+    <input name="eway" type="number">
   </div>
 </div>
 <div class="fields">
   <div class="input-field8">
     <label for="">Payment Mode</label>
-    <select id="type" name="">
+    <select id="type" name="payment_mode">
       <option value="Yes">Select</option>
       <option value="Yes">Cash</option>
       <option value="No">Account</option>            
@@ -168,31 +168,31 @@
   </div>
   <div class="input-field8">
     <label>Charges</label>
-    <input type="number">
+    <input name="charges" type="number">
   </div>
   <div class="input-field8">
     <label>COD Charges</label>
-    <input type="number">
+    <input name="cod_charge" type="number">
   </div>
   <div class="input-field8">
     <label>SGST</label>
-    <input type="number">
+    <input name="sgst" type="number">
   </div>
   <div class="input-field8">
     <label>CGST</label>
-    <input type="number">
+    <input name="cgst" type="number">
   </div>
   <div class="input-field8">
     <label>IGST</label>
-    <input type="number">
+    <input name="igst" type="number">
   </div>
   <div class="input-field8">
     <label>CESS/KFC</label>
-    <input type="number">
+    <input name="cess_kfc" type="number">
   </div>
   <div class="input-field8">
     <label>Freight</label>
-    <input type="number">
+    <input name="freight" type="number">
   </div>
 </div>
 <div class="fields">
@@ -201,15 +201,15 @@
   </div>
   <div class="input-field4">
     <label>Sender</label>
-    <input type="number">
+    <input name="sender_whatsapp" type="number">
       </div>
       <div class="input-field4">
         <label>Receiver</label>
-        <input type="number">
+        <input name="receiver_whatsapp" type="number">
           </div>
           <div class="input-field4">
             <label>Pan Number</label>
-            <input type="number">
+            <input name="pan_number" type="number">
               </div>
 
 </div>
@@ -217,11 +217,11 @@
 <label>Email</label>
   <div class="input-field3">
     <label>Sender</label>
-    <input type="text">
+    <input name="sender_email" type="email">
       </div>
       <div class="input-field3">
         <label>Receiver</label>
-        <input type="text">
+        <input name="receiver_email" type="email">
           </div>
 </div>
 <div style="text-align:center;">  
