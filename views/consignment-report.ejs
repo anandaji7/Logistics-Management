@@ -80,15 +80,15 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let i=0;i< reqDetails.length; i++){%>
+                <% for(let i=0;i< regDetails.length; i++){%>
                 <tr>
-                    <td><input type="date" value="<%=regDetails[i].date>"></td>
-                    <td><%=regDetails[i].docno></td>
-                    <td><%=regDetails[i].center></td>
-                    <td><%=regDetails[i].sender_name></td>
-                    <td><%=regDetails[i].receiver_name></td>
-                    <td><%=regDetails[i].Service></td>
-                    <td><%=regDetails[i].eway></td>
+                    <td><%=regDetails[i].date.toDateString() %></td>
+                    <td><%= regDetails[i].docno %></td>
+                    <td><%=  regDetails[i].center  %></td>
+                    <td><%= regDetails[i].sender_name %></td>
+                    <td><%= regDetails[i].receiver_name %></td>
+                    <td><%=  regDetails[i].Service  %></td>
+                    <td><%= regDetails[i].eway  %></td>
                     <td></td>
                 </tr>
                 <%} %>

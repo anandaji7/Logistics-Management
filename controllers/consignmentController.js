@@ -1,5 +1,5 @@
 const Consignments=require('../models/consignments')
-
+const ObjectId=require('mongoose').Types.ObjectId
 
 exports.getRegistration=(req,res)=>{
     res.render('consignment-registration')
@@ -47,8 +47,13 @@ exports.postRegistration=async(req,res)=>{
         pan_number:req.body.pan_number,
         sender_email:req.body.sender_email,
         receiver_email:req.body.receiver_email,
-        userId:req.session.user._id,
+        userId:ObjectId(req.session.user._id),
         date: new Date(),
     })
     const saveReg=await regDetails.save()
+}
+
+exports.getConsignment=async(req,res)=>{
+  const regDetails=await Consignments.find({})
+    res.render('consignment-report',{regDetails})
 }

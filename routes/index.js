@@ -32,10 +32,8 @@ router.get('/DRS', function(req, res, next) {
   res.render('DRS');
 });
 
-router.get('/consignment-report', function(req, res, next) {
-  res.render('consignment-report');
-});
-router.get('/consignment-registration',consignmentController.getRegistration);
+router.get('/consignment-report',userauth,consignmentController.getConsignment);
+router.get('/consignment-registration',userauth,consignmentController.getRegistration);
 router.post('/consignment-registration',consignmentController.postRegistration);
 router.get('/consignment-details', function(req, res, next) {
   res.render('consignment-details');
