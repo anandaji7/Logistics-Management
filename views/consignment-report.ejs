@@ -1,0 +1,100 @@
+<%-include('./includes/user-header.ejs')-%>
+<style>
+.body-div{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+.container{
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+<div class="body-div">
+    <div class="container">
+        <div style="display: inline;">
+            <label for="">Choose Date</label>
+            <input type="date">
+        </div>
+        <div style="margin-left: 45%; display: inline;">
+            <label for="">Monthly</label>
+            <select name="" id="">
+                <option>Select</option>
+                <option value="01">Jan</option>
+                  <option value="02">Feb</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">august</option>
+                  <option value="09">september</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>'
+            </select>
+        </div>
+        <div style="margin-top: 10%;">
+            <table id="customers">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doc No:</th>
+                    <th>To Center</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Service</th>
+                    <th>E-way bill No.</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<%-include('./includes/user-footer.ejs')-%>

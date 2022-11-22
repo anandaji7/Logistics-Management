@@ -1,0 +1,44 @@
+<%-include('./includes/user-header.ejs')-%>
+<style>
+.body-div{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+.container{
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+</style>
+<div class="body-div">
+    <div class="container">
+        <form action="">
+            <label for="">Enter Doc No.</label>
+            <input type="number">
+            <button class="button">Submit</button>
+        </form>
+    </div>
+</div>
+
+<%-include('./includes/user-footer.ejs')-%>

@@ -1,0 +1,132 @@
+<%-include('./includes/user-header.ejs')-%>
+<style>
+        .body-div{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+.container{
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.count{
+    background-color: aliceblue;
+  border: none;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 4px;
+}
+.container form{
+    position: relative;
+    margin-top: 5px;
+    min-height:240px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+form .fields .input-field3{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+form .fields .input-field1{
+    display: flex;
+    width: calc(100% / 1 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+.input-field input, select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 5px;
+    height: 42px;
+    margin: 8px 0;
+}
+</style>
+<div class="body-div">
+    <div class="container">
+        <div>
+            <h1>OUTSCAN</h1>
+        </div>
+        <form action="">
+            <div class="fields">
+                <div class="input-field3">
+                    <label for="">Date</label>
+                    <input type="date">
+                </div>
+                <div class="input-field3">
+                    <label for="">Outscan For</label>
+                    <select name="" id="">
+                        <option value="">Select</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="input-field3">
+                    <label for="">To Hub/Center Name</label>
+                    <select name="" id="">
+                        <option value="">Select</option>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="fields">
+                <div class="input-field1">
+                    <label for="">Shipment No</label>
+                    <input type="number">
+                </div>
+            </div>
+            <button class="button">Create</button>
+            <div class="count">Count: <span>0</span></div>
+        </form>
+        <h3 style="margin: 5px;">Shipment Information</h3>
+        <div style="margin-top: 25px;
+        margin-bottom: 15px;">
+            <p style="display: inline-block;">Search By Date</p>
+            <input type="date">
+        </div>
+        <button class="button">Download PDF</button>
+        <button class="button">Export Excel</button>
+    </div>
+</div>
+<%-include('./includes/user-footer.ejs')-%>
