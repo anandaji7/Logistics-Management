@@ -19,24 +19,31 @@ exports.SigninGet=(req,res)=>{
 }
 
 exports.getLogin=(req,res)=>{
+    if(!req.session.user){
     res.render('login')
+}else{
+    res.redirect('/')
+}
 }
 
 exports.postLogin=async(req,res)=>{
+    
     const userDetail= await Users.findOne({userId:req.body.userId})
     if(userDetail){
         if(userDetail.password==req.body.password){
             req.session.user=userDetail
-            res.redirect('/home')
+            res.redirect('/')
         }else{
             req.session.message = {
                 message: "wrong password",
               };
+              res.redirect('/login')
         }
     }else{
-        console.log('user doesnt exist');
         req.session.message = {
-            message: "user doesnt exist",
+            message: "userId doesnt exist",
           };
+          res.redirect('/login')
     }
+
 }

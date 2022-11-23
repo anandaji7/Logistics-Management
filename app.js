@@ -15,6 +15,15 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(function(req, res, next) {
+  if (!req.user) {
+      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+      res.header('Expires', '-1');
+      res.header('Pragma', 'no-cache');
+  }
+  next();
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "secret", saveUninitialized: true, resave: false }));
 app.use((req, res, next) => {
