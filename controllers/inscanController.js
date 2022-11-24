@@ -1,50 +1,36 @@
-const Track=require('../models/track')
-const consignment=require('../models/consignments')
+const Outscan=require('../models/outscan')
+const Consignments=require('../models/consignments')
 const Users=require('../models/users')
-const Inscan=require('../models/inscan')
+
 const ObjectId=require('mongoose').Types.ObjectId
 
 exports.getinscan=async(req,res)=>{
-    const details=await Track.aggregate([
-           {
-            $match:{track$userId:req.session.userId}
-        },
-        {
-            $lookup:{
-                
-                    from: 'consignment',
-                    localField: 'conId',
-                    foreignField:' _id',
-                    as: 'docs'
-                  
-            }
-            
-        },
-        {
-            $unwind:'$track'
-        },
-        // {
-        //     $match:{track$userId:req.session.userId}
-        // },
-        {
-            $match:{track$status:'inscan'}
-        }
-        
+   
 
-    ])
-   // const details=await Track.find({track$userId:req.session.user.userId})
-    console.log(details)
-    console.log(req.session.user.userId);
-    res.render('inscan',{details})
+    res.render('inscan')
 }
 
 exports.postInscan=async(req,res)=>{
-    const isAlreadyDoc=await Inscan.findOne({docno:req.body.docno})
-    console.log(isAlreadyDoc);
-    if(isAlreadyDoc){
-
-    }else{
-        console.log('doc already inscanned');
+    const nos=req.body.docno.split('')
+    for(let i=0;i<nos.length;i++){
+        const isinscan=await Outscan.findOne({to_id:ObjectId(req.session.user._id),docno:nos[i]})
+         if(isinscan){  
+                    await Outscan.updateOne(
+                        {_id:ObjectId(isinscan._id)},{
+                            $set:{
+                                missing:false
+                            }
+                        }
+                    )
+                    await Consignments.updateOne
+                    ({_id:ObjectId(isinscan.conId)},{
+                        $set:{
+                            scan_status:true
+                        }
+                    })          
+        }else{
+            console.log('error doc is not outscanned to this center');
+        }
     }
     res.redirect('/inscan')
 }

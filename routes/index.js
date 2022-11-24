@@ -39,9 +39,7 @@ router.get('/consignment-details', function(req, res, next) {
   res.render('consignment-details');
 });
 
-router.get('/missing-consignment',(req,res)=>{
-  res.render('missing-consignment')
-})
+router.get('/missing-consignment',userauth,outscanController.getMissing)
 
 
 module.exports = router;

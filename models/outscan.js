@@ -9,8 +9,13 @@ const OutscanSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Users'
     },
+    to_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Users'
+    },
     date:{
         type:Date
-    }
+    },
+    missing:{type:Boolean}
 })
 module.exports=mongoose.model('Outscan',OutscanSchema)

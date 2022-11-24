@@ -13,7 +13,9 @@ exports.postOutscan=async(req,res)=>{
                 docno:nos[i],
                 conId:ObjectId(isdoc._id),
                 userId:ObjectId(req.session.user._id),
-                date:Date.now()
+                to_id:ObjectId(req.body.userId),
+                date:Date.now(),
+                missing:true
             })
             const saveOutscan=await newOutscan.save()
             await Consignments.updateOne(
@@ -38,4 +40,30 @@ exports.postOutscan=async(req,res)=>{
 exports.getOutscan=async(req,res)=>{
     const users=await Users.find({})
     res.render('outscan',{users})
+}
+
+exports.getMissing=async(req,res)=>{
+    const ismissing=await Outscan.aggregate([
+        {
+            $match: {
+                    'to_id':ObjectId(req.session.user._id),
+                    'missing':true
+                    }
+            
+        },{
+            $lookup:{
+                from: 'consignments',
+                localField: 'conId',
+                foreignField: '_id',
+                as: 'result'
+              }
+        },{
+            $unwind:{
+                path:'$result'
+              }
+        }
+    ])
+
+    res.render('missing-consignment',{ismissing})
+   
 }

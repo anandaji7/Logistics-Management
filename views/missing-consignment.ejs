@@ -55,10 +55,21 @@
                     <th>Receiver</th>
                     <th>Service</th>
                     <th>E-way bill No.</th>
-                    <th>Status</th>
+                    
                 </tr>
             </thead>
             <tbody>
+                <% for(let i=0;i < ismissing.length; i++){%>
+                    <tr>
+                        <td><%=ismissing[i].date.toDateString()%></td>
+                        <td><%=ismissing[i].result.docno%></td>
+                        <td><%=ismissing[i].result.center%></td>
+                        <td><%=ismissing[i].result.sender_name%></td>
+                        <td><%=ismissing[i].result.receiver_name%></td>
+                        <td><%=ismissing[i].result.Service%></td>
+                        <td><%=ismissing[i].result.eway%></td>
+                       </tr>
+                    <%} %>
                
             </tbody>
             </table>
