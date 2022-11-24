@@ -48,7 +48,7 @@ const ConsignmentSchema=mongoose.Schema({
         type: Date,
         required:true
     },
-    
+    scan_status:{type:Boolean}
 
 },{
     timestamps:true

@@ -1,33 +1,50 @@
 const Track=require('../models/track')
 const consignment=require('../models/consignments')
 const Users=require('../models/users')
+const Inscan=require('../models/inscan')
 const ObjectId=require('mongoose').Types.ObjectId
 
-exports.getinscan=(req,res)=>{
-    res.render('inscan')
+exports.getinscan=async(req,res)=>{
+    const details=await Track.aggregate([
+           {
+            $match:{track$userId:req.session.userId}
+        },
+        {
+            $lookup:{
+                
+                    from: 'consignment',
+                    localField: 'conId',
+                    foreignField:' _id',
+                    as: 'docs'
+                  
+            }
+            
+        },
+        {
+            $unwind:'$track'
+        },
+        // {
+        //     $match:{track$userId:req.session.userId}
+        // },
+        {
+            $match:{track$status:'inscan'}
+        }
+        
+
+    ])
+   // const details=await Track.find({track$userId:req.session.user.userId})
+    console.log(details)
+    console.log(req.session.user.userId);
+    res.render('inscan',{details})
 }
 
 exports.postInscan=async(req,res)=>{
-     const userDetail= await Users.findOne({_id:ObjectId(req.session.user._id)})
-    console.log(userDetail);
-    const nos=req.body.docno.split(" ")
-    for(let i=0;i<nos.length;i++){
-        const isdoc=await consignment.findOne({docno:nos[i]})
-        if(isdoc){
-            const newTrack=new Track({
-            docno:nos[i],
-    conId:ObjectId(isdoc._id),
-    track:[{
-        status:'inscan',
-        userId:userDetail.userId,
-        date:new Date()
-    }]
-})
-const savedoc=await newTrack.save()        
-}else{
-    console.log('doc doesnt exist');
-}
+    const isAlreadyDoc=await Inscan.findOne({docno:req.body.docno})
+    console.log(isAlreadyDoc);
+    if(isAlreadyDoc){
 
-   
+    }else{
+        console.log('doc already inscanned');
     }
+    res.redirect('/inscan')
 }

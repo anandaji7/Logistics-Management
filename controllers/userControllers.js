@@ -47,3 +47,8 @@ exports.postLogin=async(req,res)=>{
     }
 
 }
+
+exports.getLogout=async(req,res)=>{
+    req.session.user=false
+    res.redirect('/login')
+}

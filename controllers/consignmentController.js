@@ -49,11 +49,13 @@ exports.postRegistration=async(req,res)=>{
         receiver_email:req.body.receiver_email,
         userId:ObjectId(req.session.user._id),
         date: new Date(),
+        scan_status:true
     })
     const saveReg=await regDetails.save()
+    res.redirect('/consignment-registration')
 }
 
 exports.getConsignment=async(req,res)=>{
-  const regDetails=await Consignments.find({})
+  const regDetails=await Consignments.find({userId:ObjectId(req.session.user._id)})
     res.render('consignment-report',{regDetails})
 }

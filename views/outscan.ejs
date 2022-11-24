@@ -89,34 +89,30 @@ form .fields .input-field1{
         <div>
             <h1>OUTSCAN</h1>
         </div>
-        <form action="">
+        <form action="/outscan" method="post">
             <div class="fields">
                 <div class="input-field3">
                     <label for="">Date</label>
-                    <input type="date">
-                </div>
-                <div class="input-field3">
-                    <label for="">Outscan For</label>
-                    <select name="" id="">
-                        <option value="">Select</option>
-                        <option value=""></option>
-                    </select>
+                    <p id="date"></p>
                 </div>
                 <div class="input-field3">
                     <label for="">To Hub/Center Name</label>
-                    <select name="" id="">
+                    <select name="userId" id="">
                         <option value="">Select</option>
-                        <option value=""></option>
+                        <% for(let i=0;i < users.length; i++){%>
+                            <option value="<%=users[i]._id%>"><%=users[i].userId%></option>
+                            <%} %>
+                        
                     </select>
                 </div>
             </div>
             <div class="fields">
                 <div class="input-field1">
                     <label for="">Shipment No</label>
-                    <input type="number">
+                    <input type="text" name="docno"/>
                 </div>
             </div>
-            <button class="button">Create</button>
+            <button type="submit" class="button">Create</button>
             <div class="count">Count: <span>0</span></div>
         </form>
         <h3 style="margin: 5px;">Shipment Information</h3>
@@ -129,4 +125,11 @@ form .fields .input-field1{
         <button class="button">Export Excel</button>
     </div>
 </div>
+<script>
+    n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+</script>
 <%-include('./includes/user-footer.ejs')-%>
