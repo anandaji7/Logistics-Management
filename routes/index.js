@@ -4,6 +4,7 @@ const userControllers=require('../controllers/userControllers')
 const consignmentController=require('../controllers/consignmentController')
 const outscanController=require('../controllers/outscanController')
 const inscanController=require('../controllers/inscanController')
+const drsController=require('../controllers/drsController')
 const userauth = (req, res, next) => {
   if (req.session.user) {
     next();
@@ -28,9 +29,7 @@ router.get('/inscan',userauth,inscanController.getinscan);
 router.post('/inscan',inscanController.postInscan)
 router.get('/outscan',userauth,outscanController.getOutscan);
 router.post('/outscan',outscanController.postOutscan)
-router.get('/DRS', function(req, res, next) {
-  res.render('DRS');
-});
+router.get('/DRS',userauth,drsController.getDRS);
 
 router.get('/consignment-report',userauth,consignmentController.getConsignment);
 router.get('/consignment-registration',userauth,consignmentController.getRegistration);
@@ -41,5 +40,10 @@ router.get('/consignment-details', function(req, res, next) {
 
 router.get('/missing-consignment',userauth,outscanController.getMissing)
 
+router.get('/add-areas',userauth,userControllers.getaddAreas)
+router.post('/add-areas',userControllers.postAddAreas)
+router.get('/add-delivery-boys',userauth,userControllers.getaddDeleveryBoys)
+router.post('/add-delivery-boys',userControllers.postAddDeleveryBoys)
+router.post('/add-pincode',userControllers.postPincode)
 
 module.exports = router;

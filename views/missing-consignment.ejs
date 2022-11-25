@@ -43,13 +43,14 @@
 </style>
 <div class="body-div">
     <div class="container">
-        <div style="margin-top: 10%;">
+        <div>
             <table id="customers">
                 <h1>Missing Consignment</h1>
                 <thead>
                 <tr>
                     <th>Date</th>
                     <th>Doc No:</th>
+                    <th>From</th>
                     <th>To Center</th>
                     <th>Sender</th>
                     <th>Receiver</th>
@@ -63,6 +64,7 @@
                     <tr>
                         <td><%=ismissing[i].date.toDateString()%></td>
                         <td><%=ismissing[i].result.docno%></td>
+                        <td><%=ismissing[i].username.userId%></td>
                         <td><%=ismissing[i].result.center%></td>
                         <td><%=ismissing[i].result.sender_name%></td>
                         <td><%=ismissing[i].result.receiver_name%></td>

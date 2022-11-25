@@ -122,7 +122,7 @@ form .fields .input-field1{
     <div class="fields">
         <div class="input-field4">
             <label for="">Issue Date</label>
-            <input type="date">
+            <p id="date"></p>
         </div>
    
    
@@ -130,7 +130,10 @@ form .fields .input-field1{
             <label for="">Seleect Area</label>
             <select name="" id="">
                 <option value="">Select</option>
-                <option value=""></option>
+                <% for(let i=0; i < users.areas.length ; i++){%>
+                    <option value="<%=users.areas[i]%>"><%=users.areas[i]%></option>
+                    <%} %>
+                
             </select>
         </div>
    
@@ -139,7 +142,9 @@ form .fields .input-field1{
             <label for="">Seleect Delivery Boy</label>
             <select name="" id="">
                 <option value="">Select</option>
-                <option value=""></option>
+                <% for(let i=0; i < users.deleveryBoys.length ; i++){%>
+                    <option value="<%=users.deleveryBoys[i]%>"><%=users.deleveryBoys[i]%></option>
+                    <%} %>
             </select>
         </div>
    
@@ -148,7 +153,9 @@ form .fields .input-field1{
             <label for="">Delivery Pincode</label>
             <select name="" id="">
                 <option value="">Select</option>
-                <option value=""></option>
+                <% for(let i=0; i < users.pincodes.length ; i++){%>
+                    <option value="<%=users.pincodes[i]%>"><%=users.pincodes[i]%></option>
+                    <%} %>
             </select>
         </div>
     </div>
@@ -156,7 +163,7 @@ form .fields .input-field1{
     <div class="fields">
         <div class="input-field1">
         <label for="">Document Number</label>
-        <input type="number">
+        <input type="number" style="padding:1em; font-size: large;">
     </div>
     </div>
     <button class="button">Create</button>
@@ -221,4 +228,11 @@ margin-left: 45%; margin-bottom: 25px;">
     </div>
 
 </div>
+<script>
+    n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+</script>
 <%-include('./includes/user-footer.ejs')-%>

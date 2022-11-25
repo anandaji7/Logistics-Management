@@ -49,11 +49,14 @@
 <div class="inscan-body">
     <div class="container">
         <header>INSCAN</header>
-
+        <div class="form first">
+          <div class="fields" style="margin-top: 10px;">
+            <div class="input-field3">
+              <label for="">Date</label>
+              <p id="date"></p>
+          </div>
+          </div>
         <form action="/inscan" method="post">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Personal Details</span>
 
                     <div class="fields">
                         <div class="input-field">
@@ -66,29 +69,40 @@
                 </div> 
             </div>
         </form>
-        <span  style="margin: 10px;">Inscan Information</span>
+        <span  style="margin: 10px;">Inventory Report</span>
         <table id="customers" style="margin-top: 20px;">
-            <tr>
-                <th>Date</th>
-              <th>CP User</th>
-              <th>Document No</th>
-              <th>Barcode Type</th>
-              <th>Weight</th>
+          <thead>  
+          <tr>
               <th>Date</th>
+              <th>Doc No:</th>
+              <th>To Center</th>
+              <th>Sender</th>
+              <th>Receiver</th>
+              <th>Service</th>
+              <th>E-way bill No.</th>
             </tr>
-            <tr>
-                <td> </td>
-              <td><select>
-                <option value="">select</option>
-              </select></td>
-              <td><input type="number"></td>
-              <td><select>
-                <option value="">select</option>
-              </select></td>
-              <td></td>
-              <td></td>
-            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0;i < ismissing.length; i++){%>
+              <tr>
+                  <td><%=ismissing[i].date.toDateString()%></td>
+                  <td><%=ismissing[i].result.docno%></td>
+                  <td><%=ismissing[i].result.center%></td>
+                  <td><%=ismissing[i].result.sender_name%></td>
+                  <td><%=ismissing[i].result.receiver_name%></td>
+                  <td><%=ismissing[i].result.Service%></td>
+                  <td><%=ismissing[i].result.eway%></td>
+                 </tr>
+              <%} %>
+          </tbody>
           </table>
     </div>
+    <script>
+      n =  new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  d = n.getDate();
+  document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+  </script>
 </div>
 <%-include('./includes/user-footer.ejs')-%>

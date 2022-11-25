@@ -1,6 +1,7 @@
 const Outscan=require('../models/outscan')
 const Users=require('../models/users')
 const Consignments=require('../models/consignments')
+const Inscan=require('../models/inscan')
 const ObjectId=require('mongoose').Types.ObjectId
 
 exports.postOutscan=async(req,res)=>{
@@ -24,6 +25,10 @@ exports.postOutscan=async(req,res)=>{
                         scan_status:false 
                     }
                 })
+                await Inscan.deleteOne({
+                  userId:ObjectId(req.session.user._id),
+                  conId:ObjectId(isdoc._id)
+                })
 
            }else{
             console.log('error consignment scan_status is false not in stock or already outscanned');
@@ -39,7 +44,27 @@ exports.postOutscan=async(req,res)=>{
 
 exports.getOutscan=async(req,res)=>{
     const users=await Users.find({})
-    res.render('outscan',{users})
+    const ismissing=await Outscan.aggregate([
+        {
+            $match: {
+                    'userId':ObjectId(req.session.user._id),
+                    'missing':true
+                    }
+            
+        },{
+            $lookup:{
+                from: 'consignments',
+                localField: 'conId',
+                foreignField: '_id',
+                as: 'result'
+              }
+        },{
+            $unwind:{
+                path:'$result'
+              }
+        }
+    ])
+    res.render('outscan',{users,ismissing})
 }
 
 exports.getMissing=async(req,res)=>{
@@ -60,6 +85,17 @@ exports.getMissing=async(req,res)=>{
         },{
             $unwind:{
                 path:'$result'
+              }
+        },{
+            $lookup:{
+                from: 'users',
+                localField: 'userId',
+                foreignField: '_id',
+                as: 'username'
+              }
+        },{
+            $unwind:{
+                path:'$username'
               }
         }
     ])

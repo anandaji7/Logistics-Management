@@ -1,6 +1,6 @@
 const Users=require('../models/users')
 
-
+const ObjectId=require('mongoose').Types.ObjectId
 
 exports.SigninPost=async(req,res)=>{
     console.log(req.body);
@@ -52,3 +52,37 @@ exports.getLogout=async(req,res)=>{
     req.session.user=false
     res.redirect('/login')
 }
+
+exports.getaddAreas=async(req,res)=>{
+const areas=await Users.findOne({_id:ObjectId(req.session.user._id)})
+    res.render('add-area',{areas})
+}
+
+exports.postAddAreas=async(req,res)=>{
+    const saveAreas=await Users.updateOne(
+        {_id:req.session.user._id},
+        {$push:{areas:req.body.area}}
+    )
+    res.redirect('/add-areas')
+}
+
+exports.getaddDeleveryBoys=async(req,res)=>{
+    const areas=await Users.findOne({_id:ObjectId(req.session.user._id)})    
+        res.render('add-delivery-boys',{areas})
+    }
+    
+    exports.postAddDeleveryBoys=async(req,res)=>{
+        const saveAreas=await Users.updateOne(
+            {_id:req.session.user._id},
+            {$push:{deleveryBoys:req.body.area}}
+        )
+        res.redirect('/add-delivery-boys')
+    }
+
+    exports.postPincode=async(req,res)=>{
+        const saveAreas=await Users.updateOne(
+            {_id:req.session.user._id},
+            {$push:{pincodes:req.body.pincode}}
+        )
+        res.redirect('/add-areas')
+    }
