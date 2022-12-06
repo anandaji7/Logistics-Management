@@ -8,102 +8,112 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.js"></script>
 </head>
 <body>
-    <div>
+    <div id="salesReport" style="padding: 5%;">
         <div style="display: flex;">
-            <h3>COURIER CONSIGNMENT NOTE ISSUED BY COMPANY</h3>
-            <h3 style="padding-left: 10%;">TAX INVOICE-NO : </h3>
+            <p>COURIER CONSIGNMENT NOTE ISSUED BY COMPANY</p>
+            <p style="padding-left: 10%;">TAX INVOICE-NO : </p>
         </div>
-        <div style="border-color: black; display: flex;">
+        <div style="border-color: black; display: flex; border-width:1px;">
 <div style=" width: 50%; ">
-    <div style="border-color: black;border-style: solid;">
-        <img style="height: 150px; width: 100%;" src="/images/shreeMaruthiLogo.png" alt="">
-        <h3>address</h3>
+    <div style="border-color: black;border-style: solid; border-width:1px;">
+        <img style="height: 100px; width: 100%;" src="/images/shreeMaruthiLogo.png" alt="">
+        <p style="font-size:xx-small;">
+            PRINCIPLE: WHITE HOUSE, PULLEPADY ROAD, ERNAKULAM ERNAKULAM
+            PHONE:04842372555</p>
     </div>
-    <div style="border-color: black;border-style: solid;">
+    <div style="border-color: black;border-style: solid; border-width:1px;">
     <div style="background-color: gray;">
 <h5>CONSIGNER</h5>
     </div>
-    <div>
-        a
+    <div style="padding-left: 10px;">
+        <p style="font-size:small;"><%=consignmentDetails.sender_name%></p>
+        <p style="font-size:small;"><%=consignmentDetails.sender_address%></p>
+        <p style="font-size:small;"><%=consignmentDetails.sender_city%></p>
+        <p style="font-size:small;">pincode: <%=consignmentDetails.sender_pincode%></p>
+        <p style="font-size:small;">mobile: <%=consignmentDetails.sender_number%></p>
     </div>
     <div style="background-color: gray;">
         <h5>CONSIGNEE</h5>
             </div>
-<div>
-    b
+<div style="padding-left: 10px;">
+    <p style="font-size:small;"><%=consignmentDetails.receiver_name%></p>
+    <p style="font-size:small;"><%=consignmentDetails.receiver_address%></p>
+    <p style="font-size:small;"><%=consignmentDetails.receiveer_city%></p>
+    <p style="font-size:small;">pincode: <%=consignmentDetails.receiver_pincode%></p>
+    <p style="font-size:small;">mobile: <%=consignmentDetails.receiver_number%></p>
 </div>
     </div>
-    <div style="border-color: black;border-style: solid;">
-    <p>SERVICE ACCOUNTING CODE :996812 DESCRIPTION OF SERVICE:COURIER SERVICE</p>
+    <div style="border-color: black;border-style: solid; border-width:1px;">
+    <p style="font-size:xx-small;">SERVICE ACCOUNTING CODE :996812 DESCRIPTION OF SERVICE:COURIER SERVICE</p>
     </div>
     <div style="display: flex;">
     <div style="width:50%;">
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">WEIGHT</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">WEIGHT</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">VOLUMETRIC CHARGE</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">VOLUMETRIC CHARGE</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">FREIGHT CHARGE</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">FREIGHT CHARGE</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">FREIGHT ON VALUE</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">FREIGHT ON VALUE</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">TAXABLE VALUE</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">TAXABLE VALUE</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">SGST@ %9</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;">SGST@ %9</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">CGST@ %9 </p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size: xx-small;">CGST@ %9 </p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">IGST@ %18</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size: xx-small;">IGST@ %18</p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">CESS@ %1 </p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size: xx-small;">CESS@ %1 </p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p style="font-size: smaller;">TOTAL CHARGE</p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size: xx-small;">TOTAL CHARGE</p>
         </div>
     </div>
     <div style="width:50%;">
-        <div style="border-color: black;border-style: solid;">
-        <p></p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+        <p style="font-size:xx-small;">&nbsp; <%=consignmentDetails.weight%></p>
         </div>
-        <div style="border-color: black;border-style: solid;">
-            <p></p>
+        <div style="border-color: black;border-style: solid; border-width:1px;">
+            <p style="font-size:xx-small;"> &nbsp;<%=consignmentDetails.vol_weight%></p>
             </div>
-            <div style="border-color: black;border-style: solid;">
-                <p></p>
+            <div style="border-color: black;border-style: solid; border-width:1px;">
+                <p style="font-size: xx-small;"> &nbsp;</p>
                 </div>
-                <div style="border-color: black;border-style: solid;">
-                    <p></p>
+                <div style="border-color: black;border-style: solid; border-width:1px;">
+                    <p style="font-size: xx-small;">&nbsp;  <%=consignmentDetails.freight%></p>
                     </div>
-                    <div style="border-color: black;border-style: solid;">
-                        <p></p>
+                    <div style="border-color: black;border-style: solid; border-width:1px;">
+                        <p style="font-size:xx-small;"> &nbsp;</p>
                         </div>
-                        <div style="border-color: black;border-style: solid;">
-                            <p></p>
+                        <div style="border-color: black;border-style: solid; border-width:1px;">
+                            <p style="font-size:xx-small;">&nbsp;<%=consignmentDetails.sgst%></p>
                             </div>
-                            <div style="border-color: black;border-style: solid;">
-                                <p></p>
+                            <div style="border-color: black;border-style: solid; border-width:1px;">
+                                <p style="font-size:xx-small;"> &nbsp;<%=consignmentDetails.cgst%></p>
                                 </div>
-                                <div style="border-color: black;border-style: solid;">
-                                    <p></p>
+                                <div style="border-color: black;border-style: solid; border-width:1px;">
+                                    <p style="font-size:xx-small;"> &nbsp;<%=consignmentDetails.igst%></p>
                                     </div>
-                                    <div style="border-color: black;border-style: solid;">
-                                        <p></p>
+                                    <div style="border-color: black;border-style: solid; border-width:1px;">
+                                        <p style="font-size:xx-small;">&nbsp;<%=consignmentDetails.cess_kfc%></p>
                                         </div>
-                                        <div style="border-color: black;border-style: solid;">
-                                            <p></p>
+                                        <div style="border-color: black;border-style: solid; border-width:1px;">
+                                            <p style="font-size: xx-small;">&nbsp; <%=consignmentDetails.charges%></p>
                                             </div>
 
     </div>
     </div>
-    <div style="border-color: black;border-style: solid;">
+    <div style="border-color: black;border-style: solid; border-width:1px;">
         <p style="font-size: smaller;">GSTIN: 32AABCM9407D1ZV | StateCode: 32 | State: KERALA</p>
     </div>
 <div>
@@ -112,53 +122,53 @@
 </div>
 <div style="width: 50%;">
     <div style="display: flex;">
-<div style="height: 50px; width:100%;border-style: solid;">
-<p>DATE</p>
+<div style="height: 50px; width:100%;border-style: solid; border-width:1px;">
+<p style="font-size: smaller;">DATE:-<span style="font-size: x-small;" id="time"></span></p>
 </div>
-<div style="height: 50px; width:100%;border-style: solid;">
-<p>ORIGIN</p>
+<div style="height: 50px; width:100%;border-style: solid; border-width:1px;">
+<p style="font-size: smaller;">ORIGIN: <%=consignmentDetails.sender_city%></p>
 </div>
-<div style="height: 50px; width:100%;border-style: solid;">
-    <p>DESTINATION</p>
+<div style="height: 50px; width:100%;border-style: solid; border-width:1px;">
+    <p style="font-size: smaller;">DESTINATION : <%=consignmentDetails.receiveer_city%></p>
     </div>
 </div>
 <div style="display: flex;">
-<div style="width: 50%;border-style: solid;border-color: black; ">
-PRODUCT: <label for="">DOX</label> <input type="checkbox">
-<label for="">NON DOX</label> <input type="checkbox">
-<label for="">FASTTRACK</label> <input type="checkbox">
+<div style="width: 50%;border-style: solid;border-color: black;font-size: smaller; border-width:1px; ">
+PRODUCT: <label style="font-size: smaller;" for="">DOX</label> <input type="checkbox">
+<label style="font-size: smaller;" for="">NON DOX</label> <input type="checkbox">
+<label style="font-size: smaller;" for="">FASTTRACK</label> <input type="checkbox">
 </div>
-<div style="width: 50%;border-style: solid;border-color: black; ">
-C.N.No.
+<div  style="width: 50%;border-style: solid;border-color: black; font-size: smaller; border-width:1px; ">
+C.N.No. <p>  <%=consignmentDetails.docno%></p>
 </div>
 </div>
 <div style="display: flex;">
-    <div style="width: 60%;border-style: solid;border-color: black; ">
+    <div style="width: 60%;border-style: solid;border-color: black;font-size: smaller; border-width:1px; ">
         (L * B * H): 0 * 0 * 0 = 0Kg(s) 
     </div>
-    <div style="width: 40%;border-style: solid;border-color: black; ">
-        MODE: SURFACE
+    <div style="width: 40%;border-style: solid;border-color: black;font-size: smaller; border-width:1px; ">
+        MODE: <%=consignmentDetails.travel_by%>
     </div>
 </div>
 <div style="display: flex;">
-    <div style="width: 60%;border-style: solid;border-color: black; ">
+    <div style="width: 60%;border-style: solid;border-color: black; font-size: smaller; border-width:1px; ">
         CONTENT OF SHIPMENT
     </div>
-    <div style="width: 40%;border-style: solid;border-color: black; ">
+    <div style="width: 40%;border-style: solid;border-color: black; font-size: smaller; border-width:1px; ">
         VALUE OF GOODS
     </div>
 </div>
 <div style="display: flex;">
-    <div style="width: 60%;border-style: solid;border-color: black; ">
+    <div style="width: 60%;border-style: solid;border-color: black; font-size: smaller; border-width:1px; ">
         PARTS
     </div>
-    <div style="width: 40%;border-style: solid;border-color: black; ">
+    <div style="width: 40%;border-style: solid;border-color: black; font-size: smaller; border-width:1px; ">
         0
     </div>
 </div>
 <div>
     <div style="justify-content: center; display: flex;">
-        <p >CONDITIONS OF CARRIAGE :</p>
+        <p style="font-size: smaller;" >CONDITIONS OF CARRIAGE :</p>
     </div>
     <div style="font-size: xx-small;">
         1. Said to Contain Basis: All the consignment shall be booked on "said to contain basis" i.e. SMCS shall be under no obligation to <br>
@@ -186,20 +196,22 @@ C.N.No.
     </div>
 </div>
 <div style="display: flex;">
-    <div style="height: 100px; width: 60%;border-style: solid;border-color: black; ">
+    <div style="height: 100px; width: 60%;border-style: solid;border-color: black; border-width:1px;">
         CONSIGNOR SIGNATURE
         <div>
             Date: 
         </div>
     </div>
-    <div style="width: 40%;border-style: solid;border-color: black; ">
+    <div style="width: 40%;border-style: solid;border-color: black; border-width:1px; ">
         RECEIVED BY
     </div>
 </div>
-<div style="border-style: solid;border-color: black;">
-    Branch Office : 
+<div style="border-style: solid;border-color: black; border-width:1px;">
+    Branch Office : <p style="font-size:small;">&nbsp;<%=userDetails.userId%></p>
+    <p style="font-size:small;">&nbsp;<%=userDetails.address%></p>
+    <p style="font-size:small;">&nbsp;<%=userDetails.city%></p>
 </div>
-<div style="border-style: solid;border-color: black;">
+<div style="border-style: solid;border-color: black; border-width:1px;">
 <p style="font-size: xx-small;">TRACK YOUR SHIPMENT ON www.shreemaruticourier.com Helpline : +91 9712 - 666 - 666 </p>
 </div>
 </div>
@@ -280,6 +292,11 @@ time to time. The Arbitration shall be conducted in English language and the ven
           html2pdf(element,opt)
         }
        </script>
+<script>
+    let datetime = new Date();
+document.getElementById("time").textContent = datetime;
 
+
+</script>
 </body>
 </html>

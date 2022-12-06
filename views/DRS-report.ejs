@@ -1,0 +1,81 @@
+<%-include('./includes/user-header.ejs')-%>
+<style>
+    #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.body-div{
+    min-height: 100vh;
+    padding-left: 6rem;
+    padding-right: 5px;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+</style>
+<div class="body-div">
+    <div style="padding: 5px;margin: 5px;
+    display: inline-block;">
+        <h3>Manage DRS</h3>
+    </div>
+
+    <table id="customers">
+    <thead>
+        <tr>
+            <th>DRS Number</th>
+            
+            <th>Area</th>
+            <th>Delivery Boy Name</th>
+            <th>Issue Date</th>
+            
+            <th>COD Cash Collected</th>
+            <th>COD Online Collected</th>
+            <th>COD Collection Pending</th>
+            <th>Total COD Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="number"></td>
+
+            <td><select name="" id="">
+                <option value="">Select</option>
+                <option value=""></option>
+            </select></td>
+            <td><select name="" id="">
+                <option value="">Select</option>
+                <option value=""></option>
+            </select></td>
+            <td></td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+    
+        </tr>
+    </tbody>
+    </table> 
+</div>
+
+<%-include('./includes/user-footer.ejs')-%>

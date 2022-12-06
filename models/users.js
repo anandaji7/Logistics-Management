@@ -6,8 +6,9 @@ const UserSchema=mongoose.Schema({
     branchCode:{type:String,required:true},
     areas:Array,
     deleveryBoys:Array,
-    pincodes:Array
-
+    pincodes:Array,
+    address:{type:String,required:true},
+    city:{type:String,required:true}
 
 }
 ,{

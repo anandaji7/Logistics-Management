@@ -1,4 +1,5 @@
 const Consignments=require('../models/consignments')
+const Users=require('../models/users')
 const ObjectId=require('mongoose').Types.ObjectId
 const Inscan=require('../models/inscan')
 exports.getRegistration=(req,res)=>{
@@ -26,8 +27,7 @@ exports.postRegistration=async(req,res)=>{
         vol_weight:req.body.vol_weight,
         content:req.body.content,
         is_eway:req.body.is_eway,
-        eway:req.body.eway,
-        expire:req.body.expire_date,
+        eway:{bill_no: req.body.eway,date:req.body.expire_date},
         payment_mode:req.body.payment_mode,
         charges:req.body.charges,
         cod_charge:req.body.cod_charge,
@@ -65,12 +65,14 @@ exports.postRegistration2=async(req,res)=>{
             sender_name:req.body.sender_name,
             sender_address:req.body.sender_address,
             sender_city:req.body.sender_city,
+            sender_pincode:req.body.sender_pincode,
             sender_number:req.body.sender_number,
             sender_email:req.body.sender_email,
             sender_gst:req.body.sender_gst,
             receiver_name:req.body.receiver_name,
             receiver_address:req.body.receiver_address,
             receiveer_city:req.body.receiveer_city,
+            receiver_pincode:req.body.receiver_pincode,
             receiver_number:req.body.receiver_number,
             receiver_email:req.body.receiver_email,
             receiver_gst:req.body.receiver_gst
@@ -81,5 +83,20 @@ exports.postRegistration2=async(req,res)=>{
 }
 exports.getConsignment=async(req,res)=>{
   const regDetails=await Consignments.find({userId:ObjectId(req.session.user._id)})
+  console.log(regDetails[0].eway.date.length)
     res.render('consignment-report',{regDetails})
+}
+
+exports.downloadConsignment=async(req,res)=>{
+    const consignmentDetails=await Consignments.findOne({_id:ObjectId(req.query.conId)})
+    const userDetails=await Users.findOne({_id:ObjectId(req.session.user._id)})
+res.render('download',{consignmentDetails,userDetails})
+}
+
+exports.getConsignmentDetails=async(req,res)=>{
+    res.render('consignment-details');
+}
+
+exports.postConsignmentDetails=async(req,res)=>{
+    const consignment=await Consignments.findOne({_id:req.body.conId})
 }

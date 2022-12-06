@@ -131,11 +131,11 @@ form .fields .input-field1{
             <div class="fields">
                 <div class="input-field1">
                     <label for="">Shipment No</label>
-                    <input type="text" name="docno" style="padding:1em; font-size: large;"/>
+                    <input type="text" name="docno"  id="docno" onkeypress="check()" style="padding:1em; font-size: large;"/>
                 </div>
             </div>
             <button type="submit" class="button">Create</button>
-            <div class="count">Count: <span>0</span></div>
+            <div class="count">Count: <span id="count">0</span></div>
         </form>
         <span  style="margin: 10px;">Outscan Report</span>
         <table id="customers" style="margin-top: 20px;">
@@ -171,5 +171,14 @@ y = n.getFullYear();
 m = n.getMonth() + 1;
 d = n.getDate();
 document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+
+function check(){
+  let input=  document.getElementById('docno')
+  let my_string =input.value
+
+  let spaceCount = (my_string.split(" ").length);
+document.getElementById('count').innerText=spaceCount
+  }
+    
 </script>
 <%-include('./includes/user-footer.ejs')-%>
