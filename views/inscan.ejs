@@ -61,11 +61,13 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Shipment Number</label>
-                            <input type="text" name="docno"/>
+                            <input type="text" id="docno" onkeypress="check()" name="docno"/>
 
                         </div>
+                        <div style="display: flex;">
                     <button type="submit" class="button">Save</button>
-                    <button disabled style="padding: 10px;  margin: 25px 2px; border: none;"><span>Count:0</span></button>
+                    <div  style=" margin: 25px 2px; border: none;"><span>Count: <span id="count">0</span> </span></div>
+                  </div>
                 </div> 
             </div>
         </form>
@@ -91,7 +93,11 @@
                   <td><%=ismissing[i].result.sender_name%></td>
                   <td><%=ismissing[i].result.receiver_name%></td>
                   <td><%=ismissing[i].result.Service%></td>
-                  <td><%=ismissing[i].result.eway%></td>
+                  <td>
+                    <% for(let j=0; j< ismissing[i].result.eway.date.length;j++){%>
+                      <%= ismissing[i].result.eway.bill_no[j]%> ,
+                   <%} %>
+                  </td>
                  </tr>
               <%} %>
           </tbody>
@@ -103,6 +109,14 @@
   m = n.getMonth() + 1;
   d = n.getDate();
   document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+  
+  function check(){
+  let input=  document.getElementById('docno')
+  let my_string =input.value
+
+  let spaceCount = (my_string.split(" ").length);
+document.getElementById('count').innerText=spaceCount
+  }
   </script>
 </div>
 <%-include('./includes/user-footer.ejs')-%>

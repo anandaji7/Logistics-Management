@@ -1,0 +1,85 @@
+<%-include('./includes/user-header.ejs')-%>
+<style>
+    #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid rgb(8, 6, 6);
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.body-div{
+    min-height: 100vh;
+    padding-left: 6rem;
+    padding-right: 5px;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f4;
+}
+</style>
+<div class="body-div">
+    <div style="padding: 5px;margin: 5px;
+    display: inline-block;">
+        <h3>Manage DRS</h3>
+    </div>
+<div style="display: flex;">
+<h5 style="padding: 10px;">DRS Number: <%=drs[0].drsno%></h5>  <h5 style="padding: 10px;">Delivery By: <%=drs[0].delivery%></h5> <h5 style="padding: 10px;">Date: <%=drs[0].date.toDateString()%></h5>
+</div>
+    <table id="customers">
+    <thead>
+        <tr>
+            <th>index</th>
+            <th>Consignment No.</th>
+            
+            <th>Sender</th>
+            <th>Sender Address</th>
+            <th>Sender Mobile</th>
+            <th>Receiver</th>
+            <th>Receiver Address</th>  
+            <th>Receiver Mobile</th>        
+            <th>E-way bill No.</th>
+            <th>COD Online Collected</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <% for(let i=0;i < drs.length; i++){%>
+                <tr>
+                <td><%=i+1%></td>
+                <td><%=drs[i].info.docno%></td>
+                <td><%=drs[i].info.sender_name%></td>
+                <td><%=drs[i].info.sender_address%></td>
+                <td><%=drs[i].info.sender_number%></td>
+                <td><%=drs[i].info.receiver_name%></td>
+                <td><%=drs[i].info.receiver_address%></td>
+                <td><%=drs[i].info.receiver_number%></td>
+                <td><% for(let j=0; j< drs[i].info.eway.date.length;j++){%>
+                    <%= drs[i].info.eway.bill_no[j]%> ,
+                 <%} %>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+                <%} %>
+
+     
+    </tbody>
+    </table> 
+</div>
+
+<%-include('./includes/user-footer.ejs')-%>

@@ -33,10 +33,13 @@
 </style>
 <div class="body-div">
     <div class="container">
-        <form action="">
+        <form action="/consignment-details" method="post">
             <label for="">Enter Doc No.</label>
-            <input type="number">
-            <button class="button">Submit</button>
+            <input type="number" name="conId">
+            <button class="button" type="submit">Submit</button>
+            <%if(message){%>
+                <p style=<%=message.type%>><%=message.message%></p>
+                <%}%>
         </form>
     </div>
 </div>

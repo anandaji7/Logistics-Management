@@ -30,13 +30,21 @@ router.post('/inscan',inscanController.postInscan)
 router.get('/outscan',userauth,outscanController.getOutscan);
 router.post('/outscan',outscanController.postOutscan)
 router.get('/DRS',userauth,drsController.getDRS);
+router.post('/DRS',userauth,drsController.postDRS)
+router.get('/DRS-report',userauth,drsController.getDRSReport);
+router.get('/DRS-view',userauth,drsController.getDRSView)
 
 router.get('/consignment-report',userauth,consignmentController.getConsignment);
 router.get('/consignment-registration',userauth,consignmentController.getRegistration);
-router.post('/consignment-registration',consignmentController.postRegistration);
-router.get('/consignment-details', function(req, res, next) {
-  res.render('consignment-details');
-});
+router.post('/consignment-registration',userauth,consignmentController.postRegistration);
+router.get('/consignment-registration2',userauth,consignmentController.getRegistration2)
+router.post('/consignment-registration2',userauth,consignmentController.postRegistration2)
+router.get('/consignment-details',userauth,consignmentController.getConsignmentDetails);
+router.post('/consignment-details',userauth,consignmentController.postConsignmentDetails)
+router.get('/edit-consignment',userauth,consignmentController.getEditConsignment1)
+router.post('/edit-consignment',userauth,consignmentController.postEditConsignment1)
+router.get('/edit-consignment2',userauth,consignmentController.getEditConsignment2)
+router.post('/edit-consignment2',userauth,consignmentController.postEditConsignment2)
 
 router.get('/missing-consignment',userauth,outscanController.getMissing)
 
@@ -46,4 +54,5 @@ router.get('/add-delivery-boys',userauth,userControllers.getaddDeleveryBoys)
 router.post('/add-delivery-boys',userControllers.postAddDeleveryBoys)
 router.post('/add-pincode',userControllers.postPincode)
 
+router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
 module.exports = router;

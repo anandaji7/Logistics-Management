@@ -65,7 +65,7 @@
             <table id="customers">
                 <thead>
                     <tr>
-                        <th> user name</th>
+                        <th> user Id</th>
                         <th>total registered</th>
                         <th>total delivered</th>
                         <th>total not delivered</th>
@@ -73,13 +73,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% for(let i=0; i < users.length; i++){%>
                     <tr>
-                        <td></td>
+                        
+                            
+                           
+                        <td><%=users[i].userId%></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td><a style="text-decoration: none; color: red;" href="">Block</a></td>
+                       
                     </tr>
+                    <%} %>
                 </tbody>
             </table>
         </div>
