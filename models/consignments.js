@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const ConsignmentSchema=mongoose.Schema({
-    docno:{type:Number,required:true},
+    docno:{type:String,required:true},
     pincode:{type:Number,required:true},
     center:{type:String},
     sender_name:{type:String},

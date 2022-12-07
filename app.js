@@ -40,7 +40,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-
+app.use((req, res, next) => {
+  res.locals.message = req.session.message;
+  delete req.session.message;
+  next();
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

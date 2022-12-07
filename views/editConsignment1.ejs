@@ -1,0 +1,240 @@
+<%-include('./includes/user-header.ejs')-%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="d-flex justify-content-center" style="padding: 2rem;">
+    <h3>Registration</h3>
+</div>
+<div class="container" style="margin-left: 5rem;">
+<div>
+<form action="/edit-consignment/?docno=<%=consignment.docno%>" method="post">
+    <div class="form-group row mt-3">
+        <div class="col-3">
+          <label for="ex1">Doc Number:	
+        </label>
+          <input class="form-control" value="<%=consignment.docno%>" name="docno" id="ex1" type="number">
+        </div>
+        <div class="col-2">
+          <label for="ex2">Pincode: 	
+        </label>
+          <input class="form-control" value="<%=consignment.pincode%>" name="pincode" id="ex2" type="number">
+        </div>
+        <div class="col-2">
+          <label for="ex3">To center :</label>
+          <input class="form-control" value="<%=consignment.center%>" name="center" id="ex3" type="text">
+        </div>
+
+
+          <div class="col-2">
+            <label for="ex1">Service:
+	
+          </label>
+            <select name="Service" class="form-control" id="">
+                <option value="<%=consignment.Service%>" selected><%=consignment.Service%></option>
+                <option value="Standard">Standard
+
+                </option>
+                <option value="Priority">Priority
+
+                </option>
+                <option value="Swift">Swift
+
+                </option>
+            </select>
+
+          </div>
+          <div class="col-2">
+            <label for="ex1">Travel By
+	
+          </label>
+            <select name="travel_by" class="form-control" id="">
+                <option value="<%=consignment.travel_by%>" selected ><%=consignment.travel_by%></option>
+                <option value="air">Air
+                </option>
+                <option value="surface">Surface
+                </option>
+            </select>
+          </div>
+          <div class="col-1">
+            <label for="ex1">Insured
+	
+          </label>
+            <select name="insured" class="form-control" id="">
+                <option value="<%=consignment.insured%>" selected ><%=consignment.insured%></option>
+                <option value="yes">YES
+                </option>
+                <option value="no">NO
+                </option>
+            </select>
+          </div>
+        </div> 
+        <div class="form-group row mt-4">
+          <div class="col-2">
+            <label for="ex1">Child Badge
+	
+          </label>
+            <select name="child_badge" class="form-control" id="">
+                <option value="<%=consignment.child_badge%>"><%=consignment.child_badge%></option>
+                <option value="yes">YES
+                </option>
+                <option value="no">NO
+                </option>
+            </select>
+          </div>
+
+          <div class="col-2">
+            <label for="ex3">COD</label>
+            <input class="form-control" name="cod" id="ex3" value="<%=consignment.cod%>" type="text">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Value</label>
+            <input class="form-control" value="<%=consignment.value%>" name="value" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Actual Weight</label>
+            <input class="form-control" value="<%=consignment.weight%>" name="weight" id="ex3" type="number">
+          </div>
+
+
+
+          <div class="col-2">
+            <label for="ex3">Length</label>
+            <input class="form-control" value="<%=consignment.length%>" name="length" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">width</label>
+            <input class="form-control" value="<%=consignment.width%>" name="width" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Height</label>
+            <input class="form-control" value="<%=consignment.height%>" name="height" id="ex3" type="number">
+          </div>
+
+        <div class="col-2">
+            <label for="ex3">Vol Weight</label>
+            <input class="form-control" value="<%=consignment.vol_weight%>" name="vol_weight" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Content</label>
+            <input class="form-control" value="<%=consignment.content%>" name="content" id="ex3" type="text">
+          </div>
+          <div class="col-2">
+            <label for="ex1">Eway
+	
+          </label>
+            <select name="is_eway" class="form-control" id="">
+                <option value="<%=consignment.is_eway%>"><%=consignment.is_eway%></option>
+                <option value="yes">YES
+                </option>
+                <option value="no">NO
+                </option>
+            </select>
+          </div>
+          <div class="col-2">
+            <label for="ex1">Payment Mode
+	
+          </label>
+            <select name="payment_mode" class="form-control" id="">
+                <option value="<%=consignment.payment_mode%>"><%=consignment.payment_mode%></option>
+                <option value="cash">Cash
+                </option>
+                <option value="account">Account
+                </option>
+            </select>
+          </div>
+
+        <div class="col-2">
+            <label for="ex3">Charges</label>
+            <input class="form-control" value="<%=consignment.charges%>" name="charges" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">COD Charges</label>
+            <input class="form-control" value="<%=consignment.cod_charge%>" name="cod_charge" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">SGST</label>
+            <input class="form-control" value="<%=consignment.sgst%>" name="sgst" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">CGST</label>
+            <input class="form-control" value="<%=consignment.cgst%>" name="cgst" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">IGST</label>
+            <input class="form-control" value="<%=consignment.igst%>" name="igst" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">CESS</label>
+            <input class="form-control" value="<%=consignment.cess_kfc%>" name="cess_kfc" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Freight</label>
+            <input class="form-control" value="<%=consignment.freight%>" name="freight" id="ex3" type="number">
+          </div>
+
+      </div>
+      <div class="form-group row mt-4">
+        <% for(let i=0;i< consignment.eway.date.length; i++){%>
+        <div class="col-4">
+            <label for="ex3">E way bill number:</label>
+            <input class="form-control" value="<%=consignment.eway.bill_no[i]%>" name="eway" id="ex3" type="number">
+          </div>
+          <div class="col-2">
+            <label for="ex3">Expire date</label>
+            <input class="form-control" value="<%=consignment.eway.date[i]%>" name="expire_date" id="ex3" type="date">
+          </div>
+          <%} %>
+          <div class="col-2">
+            <button class="add" style="margin: 5px ; padding: 2px;" type="button">Add</button>
+            <button class="remove"  style="margin: 5px; padding: 2px;"  type="button">remove</button>
+
+          </div>
+            <div class="col-4">
+              <label for="ex3">Description</label>
+              <input class="form-control" value="<%=consignment.description%>" name="description" id="ex3" type="text">
+            </div>
+      </div>
+      <div class="col-4">
+      <div id="new_chq"></div>
+      <input type="hidden" class="form-control" value="1" id="total_chq">
+      <input type="hidden" class="form-control" value="1" id="total_chq2">
+    </div>
+    <div class="d-flex justify-content-center m-3">
+        <button type="submit"  class="btn btn-success">Next</button>
+    </div>
+</form>
+
+</div>
+</div>
+<script>
+  $('.add').on('click', add);
+$('.remove').on('click', remove);
+
+function add() {
+  var new_chq_no = parseInt($('#total_chq').val()) + 1;
+  var new_input = "<input type='text' name='eway' class='form-control' id='new_"  + new_chq_no + "'>";
+
+  var new_chq_ = parseInt($('#total_chq2').val()) + 1;
+  var new_date = "<input type='date' name='expire_date' class='form-control' id='new_"  + new_chq_ + "'>";
+
+  $('#new_chq').append(new_input);
+  $('#new_chq').append(new_date);
+
+  $('#total_chq').val(new_chq_no);
+  $('#total_chq2').val(new_chq_);
+}
+
+function remove() {
+  var last_chq_no = $('#total_chq').val();
+  var last_chq_ = $('#total_chq2').val();
+
+  if (last_chq_no > 1) {
+    $('#new_' + last_chq_no).remove();
+    $('#total_chq2').val(last_chq_no - 1);
+  }
+  if (last_chq_ > 1) {
+    $('#new_' + last_chq_).remove();
+    $('#total_chq2').val(last_chq_ - 1);
+  }
+}
+</script>
+
+<%-include('./includes/user-footer.ejs')-%>

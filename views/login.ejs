@@ -39,7 +39,10 @@
 
                   <select class="form-select" aria-label="Default select example" name="branch">
                     <option selected>Branch Code</option>
-                    <option value="KTM">KTM</option>
+                    <% for(let i=0;i < branchCode.length; i++){%>
+                      <option value="<%=branchCode[i].branchCode%>"><%=branchCode[i].branchCode%></option>
+                      <%} %>
+                    <!-- <option value="KTM">KTM</option>
                     <option value="EKM">EKM</option>
                     <option value="TSR">TSR</option>
                     <option value="TVM">TVM</option>
@@ -49,7 +52,7 @@
                     <option value="IDKI">IDKI</option>
                     <option value="PTA">PTA</option>
                     <option value="WYD">WYD</option>
-                    <option value="WYD">COB</option>
+                    <option value="WYD">COB</option> -->
                   </select>                   
                   <button class="btn btn-outline-light btn-lg px-5 mt-5" type="submit">Login</button>
                   </form>

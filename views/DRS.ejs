@@ -113,12 +113,12 @@ form .fields .input-field1{
         <div style="margin: 5px;">
             <h1>DELIVERY RUN SHEET</h1>
         </div>
-        <form action="">
+        <form action="/DRS" method="post">
         <div style="display: flex;">
         <button class="button">
             Unlock DRS
         </button>
-        <div style="margin-left: auto;"><p>DRS Number:- <input type="number" name="drsno" disabled id="drsno"> </p></div>
+        <div style="margin-left: auto;"><p>DRS Number:- <input type="number" name="drsno"  id="drsno"> </p></div>
     </div>
     
     <div class="fields">
@@ -130,7 +130,7 @@ form .fields .input-field1{
    
         <div class="input-field4">
             <label for="">Select Area</label>
-            <select name="" id="">
+            <select name="area" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.areas.length ; i++){%>
                     <option value="<%=users.areas[i]%>"><%=users.areas[i]%></option>
@@ -142,7 +142,7 @@ form .fields .input-field1{
     
         <div class="input-field4">
             <label for="">Select Delivery Boy</label>
-            <select name="" id="">
+            <select name="delivery" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.deleveryBoys.length ; i++){%>
                     <option value="<%=users.deleveryBoys[i]%>"><%=users.deleveryBoys[i]%></option>
@@ -153,7 +153,7 @@ form .fields .input-field1{
     
         <div class="input-field4">
             <label for="">Delivery Pincode</label>
-            <select name="" id="">
+            <select name="pincode" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.pincodes.length ; i++){%>
                     <option value="<%=users.pincodes[i]%>"><%=users.pincodes[i]%></option>
@@ -165,12 +165,12 @@ form .fields .input-field1{
     <div class="fields">
         <div class="input-field1">
         <label for="">Document Number</label>
-        <input type="number" style="padding:1em; font-size: large;">
+        <input type="text" name="docno" oninput="check()"  value="0" id="docno" style="padding:1em; font-size: large;">
     </div>
     </div>
     <button class="button">Create</button>
     <div class="count">
-        Count:<span>0</span>
+        Count:<span id="count">0</span>
     </div>
 </form>
 <div style="padding: 5px;margin: 5px;
@@ -188,34 +188,26 @@ form .fields .input-field1{
             <th>Issue Date</th>
             
             <th>COD Cash Collected</th>
-            <th>COD Online Collected</th>
-            <th>COD Collection Pending</th>
-            <th>Total COD Amount</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><input type="number"></td>
-
-            <td><select name="" id="">
-                <option value="">Select</option>
-                <option value=""></option>
-            </select></td>
-            <td><select name="" id="">
-                <option value="">Select</option>
-                <option value=""></option>
-            </select></td>
-            <td></td>
-
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <% for(let i=0;i < drs.length; i++){%>
+            
+            <tr>
+                <td><%=drs[i].drsno%></td>
+                <td><%=drs[i].area%></td>
+                <td><%=drs[i].delivery%></td>
+                <td><%=drs[i].date.toDateString()%></td>
+                
     
-        </tr>
-    </tbody>
+                <td></td>
+                <td><a href="/DRS-view/?drsno=<%=drs[i].drsno%>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+        
+            </tr>
+    
+            <%} %>
+           </tbody>
     </table> 
     </div>
 
@@ -228,5 +220,13 @@ d = n.getDate();
 document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 document.getElementById('drsno').value=Date.now()
+
+function check(){
+  let input=  document.getElementById('docno')
+  let my_string =input.value
+
+  let spaceCount = (my_string.split(" ").length);
+document.getElementById('count').innerText=spaceCount
+  }
 </script>
 <%-include('./includes/user-footer.ejs')-%>

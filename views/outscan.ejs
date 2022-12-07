@@ -159,7 +159,11 @@ form .fields .input-field1{
                   <td><%=ismissing[i].result.sender_name%></td>
                   <td><%=ismissing[i].result.receiver_name%></td>
                   <td><%=ismissing[i].result.Service%></td>
-                  <td><%=ismissing[i].result.eway%></td>
+                  <td>
+                    <% for(let j=0; j< ismissing[i].result.eway.date.length;j++){%>
+                        <%= ismissing[i].result.eway.bill_no[j]%> ,
+                     <%} %>
+                  </td>
                  </tr>
               <%} %>
           </tbody>
