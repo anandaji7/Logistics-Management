@@ -1,10 +1,12 @@
-<%-include('./includes/admin-header.ejs')-%>
+
 <style>
+    body{
+        margin: 0px;
+    }
       .body-div{
         min-height: 100vh;
         display: flex;
         align-items: flex-start;
-        padding-top: 5%;
         justify-content: center;
         background: #4070f4;
     }
@@ -29,9 +31,9 @@ form .fields .input-field3{
         position: relative;
         max-width: 80%;
         width: 100%;
-        border-radius: 6px;
-        padding: 30px;
-        margin: 0 15px;
+        border-radius: 35px;
+        padding: 20px;
+        margin: 45px;
         background-color: #fff;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
@@ -52,26 +54,26 @@ form .fields .input-field3{
 <div class="body-div">
     <div class="container">
        
-        <h3>Register credit client</h3>
+        <h3>Edit credit client</h3>
         <form action="/admin/add-client" method="post">
             <div class="fields">
             <div class="input-field">
             <label for="">Client Name</label>
             <div  class="input-field3">
-            <input name="clientName" type="text">
+            <input name="clientName" value=<%=client.clientName%> type="text">
         </div>
         </div>
         <div class="input-field">
             <label for="">GST</label>
             <div class="input-field3">
-            <input name="gst" type="number">
+            <input name="gst" value=<%=client.gst%> type="number">
         </div>
         </div>
 
         <div class="input-field">
             <label for="">Contact</label>
             <div class="input-field3">
-            <input name="contact" type="number">
+            <input name="contact" value=<%=client.contact%> type="number">
         </div>
         </div>
 </div>
@@ -79,19 +81,19 @@ form .fields .input-field3{
     <div class="input-field">
         <label for="">Address</label>
         <div class="input-field3">
-        <textarea name="address" id="" cols="30" rows="5"></textarea>
+        <textarea name="address"  id="" cols="30" rows="5"><%=client.address%></textarea>
     </div>
 </div>
 <div class="input-field">
     <label for="">District</label>
     <div class="input-field3">
-    <input name="district" type="text">
+    <input name="district" value=<%=client.district%> type="text">
 </div>
 </div>
 <div class="input-field">
     <label for="">State</label>
     <div class="input-field3">
-    <input name="state" type="text">
+    <input name="state" value=<%=client.state%> type="text">
 </div>
 </div>
     </div>
@@ -101,4 +103,3 @@ form .fields .input-field3{
     
 
 </div>
-<%-include('./includes/admin-footer.ejs')-%>

@@ -8,7 +8,7 @@ exports.getLogin=(req,res)=>{
 exports.postLogin=async(req,res)=>{
 const checkAdmin=await Admin.findOne({adminId:req.body.adminId,password:req.body.password})
 if(checkAdmin){
-    req.session.adminlog=true
+    req.session.adminlog=checkAdmin
     res.redirect('/admin')
 }
 }
@@ -42,3 +42,4 @@ exports.postUserRegistration=async(req,res)=>{
     await saveUser.save()
     res.redirect('/register-user')
 }
+
