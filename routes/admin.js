@@ -19,6 +19,7 @@ router.get('/',adminauth,adminController.getAdmin);
 
 router.get('/login',adminController.getLogin)
 router.post('/login',adminController.postLogin)
+router.get('/logout',adminController.getLogoout)
 router.get('/users',adminauth,adminController.getTotalUsers);
 
 router.get('/add-client',adminauth,adminController.getCreateClient)
