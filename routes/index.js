@@ -5,6 +5,8 @@ const consignmentController=require('../controllers/consignmentController')
 const outscanController=require('../controllers/outscanController')
 const inscanController=require('../controllers/inscanController')
 const drsController=require('../controllers/drsController')
+const inventoryController=require('../controllers/inventoryController')
+
 const userauth = (req, res, next) => {
   if (req.session.user) {
     next();
@@ -53,6 +55,7 @@ router.post('/add-areas',userControllers.postAddAreas)
 router.get('/add-delivery-boys',userauth,userControllers.getaddDeleveryBoys)
 router.post('/add-delivery-boys',userControllers.postAddDeleveryBoys)
 router.post('/add-pincode',userControllers.postPincode)
+router.get('/inventory',inventoryController.getInventory)
 
 router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
 module.exports = router;

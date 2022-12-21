@@ -76,13 +76,6 @@ exports.postRegistration=async(req,res)=>{
         scan_status:true
     })
     const saveReg=await regDetails.save()
-    const newinscan=new Inscan({
-        docno:req.body.docno,
-        conId:saveReg._id,
-        userId:req.session.user._id,
-        date:Date.now()
-    }) 
-    await newinscan.save()
     res.redirect('/consignment-registration2/?conId='+saveReg._id)
 }
 }
