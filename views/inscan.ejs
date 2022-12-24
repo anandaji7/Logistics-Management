@@ -49,6 +49,9 @@
 <div class="inscan-body">
     <div class="container">
         <header>INSCAN</header>
+        <%if(message){%>
+          <p class="text-danger"> <%=message.message%></p>
+           <%}%>
         <div class="form first">
           <div class="fields" style="margin-top: 10px;">
             <div class="input-field3">

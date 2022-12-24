@@ -52,7 +52,10 @@ exports.postInscan=async(req,res)=>{
                     await newinscan.save()         
         }else{
             console.log('error doc is not outscanned to this center');
-        }
+            req.session.message={
+                message:'Invalid Doc No.'
+            }
+        } 
     }
     res.redirect('/inscan')
 }

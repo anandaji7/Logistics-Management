@@ -89,7 +89,7 @@
                     <% for(let i=0;i < areas.areas.length; i++){%>
                         <tr>
                         <td><%=areas.areas[i]%></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a href="/delete-area/<%=areas.areas[i]%>">Delete</a></td>
                     </tr>
                         <%} %>                  
                
@@ -107,7 +107,7 @@
                     <% for(let i=0;i < areas.pincodes.length; i++){%>
                         <tr>
                         <td><%=areas.pincodes[i]%></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a href="/delete-pincodes/<%=areas.pincodes[i]%>">Delete</a></td>
                     </tr>
                         <%} %>                  
                
