@@ -72,7 +72,7 @@ exports.postRegistration=async(req,res)=>{
         cess:req.body.cess_kfc,
         freight:req.body.freight,
         userId:ObjectId(req.session.user._id),
-        date: new Date(),
+        date: Date.now(),
         scan_status:true
     })
     const saveReg=await regDetails.save()
@@ -103,7 +103,8 @@ exports.postRegistration2=async(req,res)=>{
             receiver_pincode:req.body.receiver_pincode,
             receiver_number:req.body.receiver_number,
             receiver_email:req.body.receiver_email,
-            receiver_gst:req.body.receiver_gst
+            receiver_gst:req.body.receiver_gst,
+            Delivery:{status:'Not yet Delivered'}
         }
     })
     res.redirect('/consignment-registration')

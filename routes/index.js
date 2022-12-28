@@ -5,7 +5,9 @@ const consignmentController=require('../controllers/consignmentController')
 const outscanController=require('../controllers/outscanController')
 const inscanController=require('../controllers/inscanController')
 const drsController=require('../controllers/drsController')
-const inventoryController=require('../controllers/inventoryController')
+const inventoryController=require('../controllers/inventoryController');
+const { render } = require('ejs');
+const trackController=require('../controllers/trackController')
 
 const userauth = (req, res, next) => {
   if (req.session.user) {
@@ -60,4 +62,7 @@ router.get('/delete-pincodes/:in',userauth,userControllers.getDeletePincodes)
 router.get('/inventory',userauth,inventoryController.getInventory)
 
 router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
+
+router.get('/track',trackController.getTrack)
+router.post('/track',trackController.postTrack)
 module.exports = router;
