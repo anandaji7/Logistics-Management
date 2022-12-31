@@ -7,6 +7,9 @@
             <div class="card-body p-3 text-center">
   
               <h3 class="mb-5">User Registration</h3>
+              <%if(message){%>
+                <p class="text-danger"> <%=message.message%></p>
+                 <%}%>
             <form action="/admin/register-user" method="post">
               <div class="form-outline mb-2">
                 <input type="text" id="typeEmailX-2" name="userId" class="form-control form-control-lg" />

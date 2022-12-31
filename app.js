@@ -60,8 +60,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-mongoose.connect('mongodb://localhost/Logistics').then(()=>{console.log('Database connected Successfully');})
+const CONNECTION_URL='mongodb+srv://anand123:12345@cluster0.eik48hu.mongodb.net/test'
+mongoose.connect(CONNECTION_URL, {useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{console.log('Database connected Successfully');})
 .catch((err)=>{console.log(err);})
 
 module.exports = app;

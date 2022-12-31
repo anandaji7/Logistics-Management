@@ -21,7 +21,6 @@ exports.SigninGet=(req,res)=>{
 exports.getLogin=async(req,res)=>{
     if(!req.session.user){
         const branchCode=await Users.find()
-        console.log(branchCode);
     res.render('login',{branchCode})
 }else{
     res.redirect('/')
@@ -68,6 +67,14 @@ exports.postAddAreas=async(req,res)=>{
     res.redirect('/add-areas')
 }
 
+exports.getDeleteArea=async(req,res)=>{
+    await Users.updateOne(
+        {_id:req.session.user._id},
+        {$pull:{areas:{$in:[req.params.in]}}}
+    )
+    res.redirect('/add-areas')
+}
+
 exports.getaddDeleveryBoys=async(req,res)=>{
     const areas=await Users.findOne({_id:ObjectId(req.session.user._id)})    
         res.render('add-delivery-boys',{areas})
@@ -85,6 +92,14 @@ exports.getaddDeleveryBoys=async(req,res)=>{
         const saveAreas=await Users.updateOne(
             {_id:req.session.user._id},
             {$push:{pincodes:req.body.pincode}}
+        )
+        res.redirect('/add-areas')
+    }
+
+    exports.getDeletePincodes=async(req,res)=>{
+        await Users.updateOne(
+            {_id:req.session.user._id},
+            {$pull:{pincodes:{$in:[req.params.in]}}}
         )
         res.redirect('/add-areas')
     }

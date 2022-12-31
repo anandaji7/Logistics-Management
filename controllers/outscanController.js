@@ -5,6 +5,7 @@ const Inscan=require('../models/inscan')
 const ObjectId=require('mongoose').Types.ObjectId
 
 exports.postOutscan=async(req,res)=>{
+    const userInfo=await Users.findOne({_id:ObjectId(req.session.user._id)})
     const nos=req.body.docno.split(" ")
     for(let i=0;i<nos.length;i++){
         const isdoc=await Consignments.findOne({docno:nos[i]})
@@ -15,7 +16,7 @@ exports.postOutscan=async(req,res)=>{
                 conId:ObjectId(isdoc._id),
                 userId:ObjectId(req.session.user._id),
                 to_id:ObjectId(req.body.userId),
-                date:Date.now(),
+                date:new Date,
                 missing:true
             })
             const saveOutscan=await newOutscan.save()
@@ -23,6 +24,13 @@ exports.postOutscan=async(req,res)=>{
                 {_id:ObjectId(isdoc._id)},{
                     $set:{
                         scan_status:false 
+                    },
+                    $push:{
+                        history:{
+                            date:new Date,
+                            scan:"Outscan",
+                            location:`Outscan from ${userInfo.userId}`
+                        }
                     }
                 })
                 await Inscan.deleteOne({

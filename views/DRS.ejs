@@ -130,7 +130,7 @@ form .fields .input-field1{
    
         <div class="input-field4">
             <label for="">Select Area</label>
-            <select name="area" id="">
+            <select required name="area" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.areas.length ; i++){%>
                     <option value="<%=users.areas[i]%>"><%=users.areas[i]%></option>
@@ -142,7 +142,7 @@ form .fields .input-field1{
     
         <div class="input-field4">
             <label for="">Select Delivery Boy</label>
-            <select name="delivery" id="">
+            <select required name="delivery" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.deleveryBoys.length ; i++){%>
                     <option value="<%=users.deleveryBoys[i]%>"><%=users.deleveryBoys[i]%></option>
@@ -153,7 +153,7 @@ form .fields .input-field1{
     
         <div class="input-field4">
             <label for="">Delivery Pincode</label>
-            <select name="pincode" id="">
+            <select required name="pincode" id="">
                 <option value="">Select</option>
                 <% for(let i=0; i < users.pincodes.length ; i++){%>
                     <option value="<%=users.pincodes[i]%>"><%=users.pincodes[i]%></option>
@@ -165,7 +165,7 @@ form .fields .input-field1{
     <div class="fields">
         <div class="input-field1">
         <label for="">Document Number</label>
-        <input type="text" name="docno" oninput="check()"  value="0" id="docno" style="padding:1em; font-size: large;">
+        <input required type="text" name="docno" oninput="check()"   id="docno" style="padding:1em; font-size: large;">
     </div>
     </div>
     <button class="button">Create</button>

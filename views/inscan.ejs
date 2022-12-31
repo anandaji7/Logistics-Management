@@ -49,6 +49,9 @@
 <div class="inscan-body">
     <div class="container">
         <header>INSCAN</header>
+        <%if(message){%>
+          <p class="text-danger"> <%=message.message%></p>
+           <%}%>
         <div class="form first">
           <div class="fields" style="margin-top: 10px;">
             <div class="input-field3">
@@ -71,7 +74,7 @@
                 </div> 
             </div>
         </form>
-        <span  style="margin: 10px;">Inventory Report</span>
+        <span  style="margin: 10px;">Inscanned Report</span>
         <table id="customers" style="margin-top: 20px;">
           <thead>  
           <tr>
@@ -93,11 +96,7 @@
                   <td><%=ismissing[i].result.sender_name%></td>
                   <td><%=ismissing[i].result.receiver_name%></td>
                   <td><%=ismissing[i].result.Service%></td>
-                  <td>
-                    <% for(let j=0; j< ismissing[i].result.eway.date.length;j++){%>
-                      <%= ismissing[i].result.eway.bill_no[j]%> ,
-                   <%} %>
-                  </td>
+                  <td><%= ismissing[i].result.eway.bill_no%></td>
                  </tr>
               <%} %>
           </tbody>

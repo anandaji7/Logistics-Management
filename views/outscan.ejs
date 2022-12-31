@@ -119,7 +119,7 @@ form .fields .input-field1{
                 </div>
                 <div class="input-field3">
                     <label for="">To Hub/Center Name</label>
-                    <select name="userId" id="">
+                    <select name="userId" id="" required>
                         <option value="" >Select</option>
                         <% for(let i=0;i < users.length; i++){%>
                             <option value="<%=users[i]._id%>"><%=users[i].userId%></option>
@@ -131,7 +131,7 @@ form .fields .input-field1{
             <div class="fields">
                 <div class="input-field1">
                     <label for="">Shipment No</label>
-                    <input type="text" name="docno"  id="docno" onkeypress="check()" style="padding:1em; font-size: large;"/>
+                    <input required type="text" name="docno"  id="docno" onkeypress="check()" style="padding:1em; font-size: large;"/>
                 </div>
             </div>
             <button type="submit" class="button">Create</button>
@@ -159,11 +159,7 @@ form .fields .input-field1{
                   <td><%=ismissing[i].result.sender_name%></td>
                   <td><%=ismissing[i].result.receiver_name%></td>
                   <td><%=ismissing[i].result.Service%></td>
-                  <td>
-                    <% for(let j=0; j< ismissing[i].result.eway.date.length;j++){%>
-                        <%= ismissing[i].result.eway.bill_no[j]%> ,
-                     <%} %>
-                  </td>
+                  <td><%= ismissing[i].result.eway.bill_no%></td>
                  </tr>
               <%} %>
           </tbody>

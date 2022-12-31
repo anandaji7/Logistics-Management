@@ -1,4 +1,5 @@
 <%-include('./includes/user-header.ejs')-%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.js"></script>
 <style>
     #customers {
   font-family: Arial, Helvetica, sans-serif;
@@ -31,46 +32,40 @@
     background: #f2f2f4;
 }
 </style>
-<div class="body-div">
+<div class="body-div" id="DRSReport">
     <div style="padding: 5px;margin: 5px;
     display: inline-block;">
         <h3>Manage DRS</h3>
     </div>
 <div style="display: flex;">
-<h5 style="padding: 10px;">DRS Number: <%=drs[0].drsno%></h5>  <h5 style="padding: 10px;">Delivery By: <%=drs[0].delivery%></h5> <h5 style="padding: 10px;">Date: <%=drs[0].date.toDateString()%></h5>
+<h5 style="padding: 10px;">DRS Number: <%=drs.drsno%></h5>  <h5 style="padding: 10px;">Delivery By: <%=drs.delivery%></h5> <h5 style="padding: 10px;">Date: <%=drs.date.toDateString()%></h5>
 </div>
     <table id="customers">
     <thead>
         <tr>
             <th>index</th>
-            <th>Consignment No.</th>
-            
+            <th>Doc No.</th>
             <th>Sender</th>
-            <th>Sender Address</th>
-            <th>Sender Mobile</th>
-            <th>Receiver</th>
-            <th>Receiver Address</th>  
-            <th>Receiver Mobile</th>        
-            <th>E-way bill No.</th>
-            <th>COD Online Collected</th>
+            <th>Receiver</th>     
+            <th>E-way Nos</th>
+            <th>COD</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         
-            <% for(let i=0;i < drs.length; i++){%>
+            <% for(let i=0;i < cons.length; i++){%>
                 <tr>
                 <td><%=i+1%></td>
-                <td><%=drs[i].info.docno%></td>
-                <td><%=drs[i].info.sender_name%></td>
-                <td><%=drs[i].info.sender_address%></td>
-                <td><%=drs[i].info.sender_number%></td>
-                <td><%=drs[i].info.receiver_name%></td>
-                <td><%=drs[i].info.receiver_address%></td>
-                <td><%=drs[i].info.receiver_number%></td>
-                <td><% for(let j=0; j< drs[i].info.eway.date.length;j++){%>
-                    <%= drs[i].info.eway.bill_no[j]%> ,
-                 <%} %>
+                <td><%=cons[i].docno%></td>
+                <td><%=cons[i].sender_name%><br>
+                <%=cons[i].sender_address%>
+                <%=cons[i].sender_number%></td>
+             <td><%=cons[i].receiver_name%><br>
+                <%=cons[i].receiver_address%>
+                <%=cons[i].receiver_number%></td>
+                <td>
+                    <%=cons[i].eway.bill_no%>
                 </td>
                 <td></td>
                 <td></td>
@@ -80,6 +75,32 @@
      
     </tbody>
     </table> 
+    <div><button  onclick="downloadPdf()">DOWNLOAD AS PDF</button></div>
 </div>
 
 <%-include('./includes/user-footer.ejs')-%>
+
+<script>
+    function downloadPdf() {
+      var element = document.getElementById("DRSReport")
+
+      var opt = {
+        margin: 0,
+        filename: 'DRSReport.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 2
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'letter',
+          orientation: 'landscape'
+        }
+      };
+
+      html2pdf(element,opt)
+    }
+       </script>

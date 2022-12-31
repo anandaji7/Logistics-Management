@@ -5,6 +5,10 @@ const consignmentController=require('../controllers/consignmentController')
 const outscanController=require('../controllers/outscanController')
 const inscanController=require('../controllers/inscanController')
 const drsController=require('../controllers/drsController')
+const inventoryController=require('../controllers/inventoryController');
+const { render } = require('ejs');
+const trackController=require('../controllers/trackController')
+
 const userauth = (req, res, next) => {
   if (req.session.user) {
     next();
@@ -26,9 +30,9 @@ router.post('/login',userControllers.postLogin)
 router.get('/logout',userControllers.getLogout)
 
 router.get('/inscan',userauth,inscanController.getinscan);
-router.post('/inscan',inscanController.postInscan)
+router.post('/inscan',userauth,inscanController.postInscan)
 router.get('/outscan',userauth,outscanController.getOutscan);
-router.post('/outscan',outscanController.postOutscan)
+router.post('/outscan',userauth,outscanController.postOutscan)
 router.get('/DRS',userauth,drsController.getDRS);
 router.post('/DRS',userauth,drsController.postDRS)
 router.get('/DRS-report',userauth,drsController.getDRSReport);
@@ -49,10 +53,16 @@ router.post('/edit-consignment2',userauth,consignmentController.postEditConsignm
 router.get('/missing-consignment',userauth,outscanController.getMissing)
 
 router.get('/add-areas',userauth,userControllers.getaddAreas)
-router.post('/add-areas',userControllers.postAddAreas)
+router.post('/add-areas',userauth,userControllers.postAddAreas)
+router.get('/delete-area/:in',userauth,userControllers.getDeleteArea)
 router.get('/add-delivery-boys',userauth,userControllers.getaddDeleveryBoys)
-router.post('/add-delivery-boys',userControllers.postAddDeleveryBoys)
-router.post('/add-pincode',userControllers.postPincode)
+router.post('/add-delivery-boys',userauth,userControllers.postAddDeleveryBoys)
+router.post('/add-pincode',userauth,userControllers.postPincode)
+router.get('/delete-pincodes/:in',userauth,userControllers.getDeletePincodes)
+router.get('/inventory',userauth,inventoryController.getInventory)
 
 router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
+
+router.get('/track',trackController.getTrack)
+router.post('/track',trackController.postTrack)
 module.exports = router;

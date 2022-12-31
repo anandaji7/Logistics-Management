@@ -90,7 +90,7 @@
                     <td><%=  regDetails[i].Service  %></td>
                     <td>
                       <% for(let j=0; j< regDetails[i].eway.date.length;j++){%>
-                      <%= regDetails[i].eway.bill_no[j]%> ,
+                      <%= regDetails[i].eway.bill_no[j]%> 
                    <%} %>
                   </td>
                     <td><a href="/consinment-invoice?conId=<%=regDetails[i]._id%>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
