@@ -1,5 +1,5 @@
 const Users=require('../models/users')
-
+const Delivery=require('../models/delivery')
 const ObjectId=require('mongoose').Types.ObjectId
 
 exports.SigninPost=async(req,res)=>{
@@ -76,15 +76,18 @@ exports.getDeleteArea=async(req,res)=>{
 }
 
 exports.getaddDeleveryBoys=async(req,res)=>{
-    const areas=await Users.findOne({_id:ObjectId(req.session.user._id)})    
-        res.render('add-delivery-boys',{areas})
+    const boysDetails=await Delivery.find({hub:ObjectId(req.session.user._id)})   
+        res.render('add-delivery-boys',{boysDetails})
     }
     
     exports.postAddDeleveryBoys=async(req,res)=>{
-        const saveAreas=await Users.updateOne(
-            {_id:req.session.user._id},
-            {$push:{deleveryBoys:req.body.area}}
-        )
+        const createDeliveryAcc=new Delivery({
+            name:req.body.name,
+            userId:req.body.userId,
+            password:req.body.password,
+            hub:req.session.user._id
+        })
+        await createDeliveryAcc.save()
         res.redirect('/add-delivery-boys')
     }
 

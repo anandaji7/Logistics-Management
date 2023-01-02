@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fileUpload=require('express-fileupload')
 const mongoose = require('mongoose');
 const session = require('express-session')
-
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 
@@ -37,14 +37,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(fileUpload());
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+
 app.use((req, res, next) => {
   res.locals.message = req.session.message;
   delete req.session.message;
   next();
 });
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "/public/images")))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

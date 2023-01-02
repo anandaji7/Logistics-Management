@@ -8,6 +8,7 @@ const drsController=require('../controllers/drsController')
 const inventoryController=require('../controllers/inventoryController');
 const { render } = require('ejs');
 const trackController=require('../controllers/trackController')
+const deliveryControlleer=require('../controllers/deliveryController')
 
 const userauth = (req, res, next) => {
   if (req.session.user) {
@@ -16,6 +17,14 @@ const userauth = (req, res, next) => {
     res.redirect("/login");
   }
 };
+
+const deliveryauth=(req,res,next)=>{
+  if(req.session.delivery){
+    next()
+  }else{
+    res.redirect('/delivery')
+  }
+}
 /* GET home page. */
 //signin
 router.get('/signin',userControllers.SigninGet)
@@ -62,7 +71,15 @@ router.get('/delete-pincodes/:in',userauth,userControllers.getDeletePincodes)
 router.get('/inventory',userauth,inventoryController.getInventory)
 
 router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
-
+// Traking
 router.get('/track',trackController.getTrack)
 router.post('/track',trackController.postTrack)
+// Delivery boy
+router.get('/delivery',deliveryControlleer.getDeliveryLogin)
+router.post('/delivery',deliveryControlleer.postDeliveryLogin)
+router.get('/delivery/home',deliveryauth,deliveryControlleer.getDeliveryhome)
+router.get('/delivery/DRS-view/:drsno',deliveryauth,deliveryControlleer.getDeliveryView)
+router.post('/delivery/DRS-view/:id/:drsno',deliveryauth,deliveryControlleer.postDeliveryView)
+
+
 module.exports = router;

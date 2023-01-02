@@ -144,8 +144,8 @@ form .fields .input-field1{
             <label for="">Select Delivery Boy</label>
             <select required name="delivery" id="">
                 <option value="">Select</option>
-                <% for(let i=0; i < users.deleveryBoys.length ; i++){%>
-                    <option value="<%=users.deleveryBoys[i]%>"><%=users.deleveryBoys[i]%></option>
+                <% for(let i=0; i < boysDetails.length ; i++){%>
+                    <option value="<%=boysDetails[i]._id%>"><%=boysDetails[i].name%></option>
                     <%} %>
             </select>
         </div>
@@ -184,7 +184,6 @@ form .fields .input-field1{
             <th>DRS Number</th>
             
             <th>Area</th>
-            <th>Delivery Boy Name</th>
             <th>Issue Date</th>
             
             <th>COD Cash Collected</th>
@@ -197,7 +196,6 @@ form .fields .input-field1{
             <tr>
                 <td><%=drs[i].drsno%></td>
                 <td><%=drs[i].area%></td>
-                <td><%=drs[i].delivery%></td>
                 <td><%=drs[i].date.toDateString()%></td>
                 
     

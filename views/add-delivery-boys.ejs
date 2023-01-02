@@ -10,7 +10,7 @@
   }
   .input-field{
       justify-content: center;
-      
+      display: flex;
       margin: 2em;
   }
   .container{
@@ -64,8 +64,18 @@
         <h3>Add Delivery Boys</h3>
          <form action="/add-delivery-boys" method="post">
             <div class="input-field">
+                <div>
                 <label for="">Enter name</label>
-                <input type="text" name="area">
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="">Create User Id</label>
+                <input type="text" name="userId">
+            </div>
+            <div>
+                <label for="">Create Password</label>
+                <input type="text" name="password">
+            </div>
             </div>
             <button class="button" type="submit">Submit</button>
          </form>
@@ -73,14 +83,17 @@
             <thead>
                 <tr>
                     <th>Delivery Boys</th>
+                    <th>UserId</th>
+                    <th>Password</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                
-                    <% for(let i=0;i < areas.deleveryBoys.length; i++){%>
+                    <% for(let i=0;i < boysDetails.length; i++){%>
                         <tr>
-                        <td><%=areas.deleveryBoys[i]%></td>
+                        <td><%=boysDetails[i].name%></td>
+                        <td><%=boysDetails[i].userId%></td>
+                        <td><%=boysDetails[i].password%></td>
                         <td><a href="">Delete</a></td>
                     </tr>
                         <%} %>                  

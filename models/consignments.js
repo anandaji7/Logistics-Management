@@ -52,7 +52,9 @@ const ConsignmentSchema=mongoose.Schema({
     },
     scan_status:{type:Boolean},
     history:{type:Array},
-    Delivery:{type:Object}
+    DeliveryStatus:{type:String},
+    DeliveryDate:{type:Date},
+    image:{type:String}
 
 },{
     timestamps:true
