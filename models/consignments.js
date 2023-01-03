@@ -54,7 +54,8 @@ const ConsignmentSchema=mongoose.Schema({
     history:{type:Array},
     DeliveryStatus:{type:String},
     DeliveryDate:{type:Date},
-    image:{type:String}
+    image:{type:String},
+    approved:{type:Boolean}
 
 },{
     timestamps:true

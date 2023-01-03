@@ -44,3 +44,12 @@ exports.getDRSView=async(req,res)=>{
     }
     res.render('DRS-view',{cons,drs,boydetail})
 }
+
+exports.getDeliveryApprove=async(req,res)=>{
+    await Consignments.updateOne({_id:ObjectId(req.params.id)},{
+       $set:{approved:true}
+    })
+
+    await Inscan.deleteOne({conId:ObjectId(req.params.id)})
+    res.redirect('/DRS-view/?drsno='+req.params.drsno)
+   }

@@ -31,6 +31,19 @@
     justify-content: center;
     background: #f2f2f4;
 }
+#fullpage {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-color: black;
+}
 </style>
 <div class="body-div" id="DRSReport">
     <div style="padding: 5px;margin: 5px;
@@ -48,7 +61,6 @@
             <th>Sender</th>
             <th>Receiver</th>     
             <th>E-way Nos</th>
-            <th>COD</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -58,19 +70,40 @@
                 <tr>
                 <td><%=i+1%></td>
                 <td><%=cons[i].docno%></td>
-                <td><%=cons[i].sender_name%><br>
-                <%=cons[i].sender_address%>
-                <%=cons[i].sender_number%></td>
-             <td><%=cons[i].receiver_name%><br>
-                <%=cons[i].receiver_address%>
-                <%=cons[i].receiver_number%></td>
+                <td>
+                  <%=cons[i].sender_name%><br>
+                <%=cons[i].sender_address%><br>
+                <%=cons[i].sender_city%><br>
+                <%=cons[i].sender_pincode%><br>
+                <%=cons[i].sender_number%>
+              </td>
+             <td>
+              <%=cons[i].receiver_name%><br>
+              <%=cons[i].receiver_address%><br>
+              <%=cons[i].receiveer_city%><br>
+              <%=cons[i].receiver_pincode%><br>
+              <%=cons[i].receiver_number%>
+            </td>
                 <td>
                     <%=cons[i].eway.bill_no%>
                 </td>
-                <td></td>
-                <td></td>
+                 <% if(cons[i].approved){%>
+                  <td>The consignment has been delivered</td>
+                  <%}else{%>
+                    <% if(cons[i].DeliveryStatus=='Delivered'){%>
+                      <td>
+                        <div class="gallery">
+                        <img height="50px" src="/<%=cons[i].image%>" alt="">
+                        <a href="/DRS/approve-status/<%=cons[i]._id%>/<%=drs.drsno%>" class="btn btn-success" >Approve</a>
+                      </div>
+                      </td>
+                      <%}else{%>
+                        <td></td>
+                        <%} %>
+                  <%} %> 
             </tr>
                 <%} %>
+                <div id="fullpage" onclick="this.style.display='none';"></div>
 
      
     </tbody>
@@ -78,29 +111,43 @@
     <div><button  onclick="downloadPdf()">DOWNLOAD AS PDF</button></div>
 </div>
 
-<%-include('./includes/user-footer.ejs')-%>
+<script>
+  const imgs = document.querySelectorAll('.gallery img');
+const fullPage = document.querySelector('#fullpage');
+
+imgs.forEach(img => {
+  img.addEventListener('click', function() {
+    fullPage.style.backgroundImage = 'url(' + img.src + ')';
+    fullPage.style.display = 'block';
+  });
+});
+</script>
 
 <script>
-    function downloadPdf() {
-      var element = document.getElementById("DRSReport")
+  function downloadPdf() {
+    var element = document.getElementById("DRSReport")
 
-      var opt = {
-        margin: 0,
-        filename: 'DRSReport.pdf',
-        image: {
-          type: 'jpeg',
-          quality: 0.98
-        },
-        html2canvas: {
-          scale: 2
-        },
-        jsPDF: {
-          unit: 'in',
-          format: 'letter',
-          orientation: 'landscape'
-        }
-      };
+    var opt = {
+      margin: 0,
+      filename: 'DRSReport.pdf',
+      image: {
+        type: 'jpeg',
+        quality: 0.98
+      },
+      html2canvas: {
+        scale: 2
+      },
+      jsPDF: {
+        unit: 'in',
+        format: 'letter',
+        orientation: 'landscape'
+      }
+    };
 
-      html2pdf(element,opt)
-    }
+    html2pdf(element,opt)
+  }
        </script>
+
+<%-include('./includes/user-footer.ejs')-%>
+
+

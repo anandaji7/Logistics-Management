@@ -54,3 +54,4 @@ exports.postDeliveryView=async(req,res)=>{
     })
     res.redirect('/delivery/DRS-view/'+req.params.drsno)
 }
+

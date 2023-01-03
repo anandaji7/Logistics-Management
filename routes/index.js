@@ -45,7 +45,8 @@ router.post('/outscan',userauth,outscanController.postOutscan)
 router.get('/DRS',userauth,drsController.getDRS);
 router.post('/DRS',userauth,drsController.postDRS)
 router.get('/DRS-report',userauth,drsController.getDRSReport);
-router.get('/DRS-view',userauth,drsController.getDRSView)
+router.get('/DRS-view',userauth,drsController.getDRSView) 
+router.get('/DRS/approve-status/:id/:drsno',userauth,drsController.getDeliveryApprove)
 
 router.get('/consignment-report',userauth,consignmentController.getConsignment);
 router.get('/consignment-registration',userauth,consignmentController.getRegistration);
@@ -80,6 +81,7 @@ router.post('/delivery',deliveryControlleer.postDeliveryLogin)
 router.get('/delivery/home',deliveryauth,deliveryControlleer.getDeliveryhome)
 router.get('/delivery/DRS-view/:drsno',deliveryauth,deliveryControlleer.getDeliveryView)
 router.post('/delivery/DRS-view/:id/:drsno',deliveryauth,deliveryControlleer.postDeliveryView)
+
 
 
 module.exports = router;
