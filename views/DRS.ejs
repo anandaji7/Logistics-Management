@@ -172,6 +172,9 @@ form .fields .input-field1{
     <div class="count">
         Count:<span id="count">0</span>
     </div>
+    <%if(message){%>
+        <p style="color:red;"><%=message.message%></p>
+        <%}%>
 </form>
 <div style="padding: 5px;margin: 5px;
     display: inline-block;">

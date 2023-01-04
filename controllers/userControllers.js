@@ -91,6 +91,11 @@ exports.getaddDeleveryBoys=async(req,res)=>{
         res.redirect('/add-delivery-boys')
     }
 
+    exports.getDeleteDeleveryBoys=async(req,res)=>{
+        await Delivery.deleteOne({_id:req.params.id})
+        res.redirect('/add-delivery-boys')
+    }
+
     exports.postPincode=async(req,res)=>{
         const saveAreas=await Users.updateOne(
             {_id:req.session.user._id},

@@ -14,7 +14,16 @@ res.render('DRS',{users,drs,boysDetails})
 
 exports.postDRS=async(req,res)=>{
     const docs=req.body.docno.split(' ')
-    console.log(req.body.drsno);
+    let isdocs=true
+    let wrongCon=''
+    for(let i=0;i<docs.length;i++){
+        const validCon=await Consignments.findOne({docno:docs[i]})
+        if(!validCon){
+         isdocs=false
+          wrongCon=docs[i]
+        }
+    }
+    if(isdocs){
     const saveDrs= new DRS({
         drsno:req.body.drsno,
         date:Date.now(),
@@ -26,6 +35,12 @@ exports.postDRS=async(req,res)=>{
     })
     const drs=await saveDrs.save()
     res.redirect('/DRS')
+}else{
+    req.session.message={
+        message:`Invalid Document Number ${wrongCon}`
+    }
+    res.redirect('/DRS')
+}
 }
 
 exports.getDRSReport=async(req,res)=>{

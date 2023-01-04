@@ -130,12 +130,15 @@ form .fields .input-field1{
             </div>
             <div class="fields">
                 <div class="input-field1">
-                    <label for="">Shipment No</label>
+                    <label for="">Document No.s</label>
                     <input required type="text" name="docno"  id="docno" onkeypress="check()" style="padding:1em; font-size: large;"/>
                 </div>
             </div>
             <button type="submit" class="button">Create</button>
             <div class="count">Count: <span id="count">0</span></div>
+            <% if(message){%>
+                <p style="color: red;"><%=message.message%></p>
+                <%} %>
         </form>
         <span  style="margin: 10px;">Outscan Report</span>
         <table id="customers" style="margin-top: 20px;">

@@ -67,14 +67,15 @@ router.post('/add-areas',userauth,userControllers.postAddAreas)
 router.get('/delete-area/:in',userauth,userControllers.getDeleteArea)
 router.get('/add-delivery-boys',userauth,userControllers.getaddDeleveryBoys)
 router.post('/add-delivery-boys',userauth,userControllers.postAddDeleveryBoys)
+router.get('/delete-delivery-boys/:id',userauth,userControllers.getDeleteDeleveryBoys)
 router.post('/add-pincode',userauth,userControllers.postPincode)
 router.get('/delete-pincodes/:in',userauth,userControllers.getDeletePincodes)
 router.get('/inventory',userauth,inventoryController.getInventory)
 
 router.get('/consinment-invoice',userauth,consignmentController.downloadConsignment)
 // Traking
-router.get('/track',trackController.getTrack)
-router.post('/track',trackController.postTrack)
+router.get('/track',userauth,trackController.getTrack)
+router.post('/track',userauth,trackController.postTrack)
 // Delivery boy
 router.get('/delivery',deliveryControlleer.getDeliveryLogin)
 router.post('/delivery',deliveryControlleer.postDeliveryLogin)

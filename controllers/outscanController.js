@@ -44,6 +44,9 @@ exports.postOutscan=async(req,res)=>{
 
         }else{
             console.log('error doc is not registered');
+            req.session.message={
+                message:`Invalid Document number ${nos[i]}`
+            }
         }
     }
 

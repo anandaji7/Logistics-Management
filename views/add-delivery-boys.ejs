@@ -66,15 +66,15 @@
             <div class="input-field">
                 <div>
                 <label for="">Enter name</label>
-                <input type="text" name="name">
+                <input type="text" required name="name">
             </div>
             <div>
                 <label for="">Create User Id</label>
-                <input type="text" name="userId">
+                <input type="text" required name="userId">
             </div>
             <div>
                 <label for="">Create Password</label>
-                <input type="text" name="password">
+                <input type="text" required name="password">
             </div>
             </div>
             <button class="button" type="submit">Submit</button>
@@ -94,7 +94,7 @@
                         <td><%=boysDetails[i].name%></td>
                         <td><%=boysDetails[i].userId%></td>
                         <td><%=boysDetails[i].password%></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a href="/delete-delivery-boys/<%=boysDetails[i]._id%>">Delete</a></td>
                     </tr>
                         <%} %>                  
                
