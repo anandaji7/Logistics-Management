@@ -33,7 +33,7 @@ router.post('/signin',userControllers.SigninPost)
 router.get('/',userauth, function(req, res, next) {
   res.render('home',{userDetails:req.session.user});
 });
-
+router.get('/user-login',(req,res)=>{res.render('user-login')})
 router.get('/login',userControllers.getLogin)
 router.post('/login',userControllers.postLogin)
 router.get('/logout',userControllers.getLogout)

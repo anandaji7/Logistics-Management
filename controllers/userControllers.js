@@ -21,7 +21,7 @@ exports.SigninGet=(req,res)=>{
 exports.getLogin=async(req,res)=>{
     if(!req.session.user){
         const branchCode=await Users.find()
-    res.render('login',{branchCode})
+    res.render('user-login',{branchCode})
 }else{
     res.redirect('/')
 }
