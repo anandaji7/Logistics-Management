@@ -16,7 +16,13 @@
                 class="img-fluid" alt="Sample image">
             </div>
 
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="    border: green;
+            /* border-width: thick; */
+            border-style: solid;
+            border-width: 10px;
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 2rem;">
               <form action="/login" method="post">
                 <%if(message){%>
                   <p class="text-danger"> <%=message.message%></p>
